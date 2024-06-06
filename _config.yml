@@ -1,8 +1,10 @@
 title: Notes
-description: 非自明さ
+description: Notes
 theme: just-the-docs
 
 url: https://wavepackets.github.io/notes
 
 aux_links:
   Template Repository: https://github.com/just-the-docs/just-the-docs-template
+
+math: mathjax
