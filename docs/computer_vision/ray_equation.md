@@ -20,7 +20,7 @@ parent: Computer Vision
 弧長が $\Delta s$ だけ離れた２点 $\vb\*{r}(s), \vb\*{r}(s\+\Delta s)$ に対し，
 
 \begin{equation}
-\dv{ \vb*{r} }{s} = \lim_{\Delta s \to 0} \frac{ \vb*{r}(s+\Delta s) - \vb*{r}(s) }{\Delta s}
+\dv{ \vb\*{r} }{s} = \lim_{\Delta s \to 0} \frac{ \vb\*{r}(s+\Delta s) - \vb\*{r}(s) }{\Delta s}
 \end{equation}
 
 は，点 $\vb\*{r}(s)$ における光線方向の単位ベクトルを表している．
