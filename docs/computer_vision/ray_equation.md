@@ -7,7 +7,10 @@ parent: Computer Vision
 
 # Ray Equation
 
-![弧長パラメータ$s$](figs/ray1.svg)
+<figure>
+<img src="figs/ray1.svg" width="150%" alt="光線と弧長パラメータ">
+<figcaption>光線と弧長パラメータ</figcaption>
+</figure>
 
 \begin{equation}
 	\dv{s} \qty( n \dv{\vb*{r}}{s} ) = \grad n \label{eq:rayeq}
@@ -17,4 +20,4 @@ parent: Computer Vision
 
 
 ## 参考文献
-- Tr\"ager, ``Springer Handbook of Lasers and Optics,'' Springer, 2012. Sec. 2.1.
+- Träger, ``Springer Handbook of Lasers and Optics,'' Springer, 2012. Sec. 2.1.
