@@ -20,14 +20,14 @@ parent: Computer Vision
 弧長が $\Delta s$ だけ離れた２点 $\vb\*{r}(s), \vb\*{r}(s\+\Delta s)$ に対し，
 
 \begin{equation}
-\dv{ \vb\*{r} }{s} \= \lim\_{\Delta s \to 0} \frac{ \vb\*{r}(s\+\Delta s) - \vb\*{r}(s) }{\Delta s}
+\dv{ \vb*{r} }{s} = \lim_{\Delta s \to 0} \frac{ \vb*{r}(s+\Delta s) - \vb*{r}(s) }{\Delta s}
 \end{equation}
 
 は，点 $\vb\*{r}(s)$ における光線方向の単位ベクトルを表している．
 このベクトルと，屈折率 $n \qty(\= \frac{c\_0}{c})$ ($c\_0$ は真空中の光速， $c$ は物質中の各点での光速) との間には，次の**ray equation**が成り立つことが知られている:
 
 \begin{equation}
-	\dv{s} \qty( n \dv{\vb\*{r}}{s} ) \= \grad n \label{eq:rayeq}
+	\dv{s} \qty( n \dv{\vb*{r}}{s} ) = \grad n \label{eq:rayeq}
 \end{equation}
 
 以下，このray equationの導出について説明する．
