@@ -47,6 +47,18 @@ $$
 $$
 ただし $\vb\*{E}$ は電場 (electric vector), $\vb\*{H}$ は磁場 (magnetic vector), $\vb\*{D}$ は電束密度 (electric displacement), $\vb\*{B}$ は磁束密度 (magnetic induction), $\vb\*{j}$ は電流密度 (electric current density)．
 
+また真空中の構成方程式は:
+$$
+\begin{align}
+&\vb*{D}(\vb*{r},t) = \epsilon_0 \vb*{E}(\vb*{r},t) \\
+&\vb*{B}(\vb*{r},t) = \mu_0 \vb*{H}(\vb*{r},t) \\
+&\vb*{j}(\vb*{r},t) = \vb*{0}
+\end{align}
+$$
+ただし $\epsilon_0$ と $\mu_0$ はそれぞれ，真空中の誘電率と透磁率である．
+
+
+
 
 ### 参考文献
 - Träger, "Springer Handbook of Lasers and Optics," Springer, 2012. Sec. 2.1.
