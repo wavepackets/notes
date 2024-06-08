@@ -7,17 +7,30 @@ parent: Computer Vision
 
 # Ray Equation
 
-<figure>
-<img src="figs/ray1.svg" width="150%" alt="光線と弧長パラメータ">
-<figcaption>光線と弧長パラメータ</figcaption>
-</figure>
+光の波動性 (回折など) を無視することで，１本の**光線** (ray) 上を伝わるとみなすことができる．
+このような単純化は幾何光学近似とよばれ，光の屈折などの計算でよく使われる．
 
+一様でない密度分布を通る光線は，それぞれの点で屈折し，曲線となる．
+下図のような光線を考える．
+光線上に基準点を１つとり，その位置ベクトルを $\vb*{r}_0$ とする．
+基準点 $\vb*{r}_0$ から光線に沿って測った距離 (**弧長**, arc length) が $s$ となるような，光線上の点の位置ベクトルを $\vb*{r}(s)$ とかくことにする ($\vb*{r}(0) = \vb*{r}_0$ である)．
+
+![弧長](figs/ray1.svg)
+
+弧長が $\Delta s$ だけ離れた２点 $\vb*{r}(s), \vb*{r}(s+\Delta s)$ に対し，
+\begin{equation}
+\dv{ \vb*{r} }{s} = \lim_{\Delta s \to 0} \frac{ \vb*{r}(s+\Delta s) - \vb*{r}(s) }{\Delta s}
+\end{equation}
+は，点 $\vb*{r}(s)$ における光線方向の単位ベクトルを表している．
+このベクトルと，屈折率 $n \qty(= \frac{c_0}{c})$ ($c_0$ は真空中の光速， $c$ は物質中の各点での光速) との間には，次の**ray equation**が成り立つことが知られている:
 \begin{equation}
 	\dv{s} \qty( n \dv{\vb*{r}}{s} ) = \grad n \label{eq:rayeq}
 \end{equation}
+以下，このray equationの導出について説明する．
 
-式\eqref{eq:rayeq}
+# 導出
+
 
 
 ## 参考文献
-- Träger, ``Springer Handbook of Lasers and Optics,'' Springer, 2012. Sec. 2.1.
+- Träger, "Springer Handbook of Lasers and Optics,"" Springer, 2012. Sec. 2.1.
