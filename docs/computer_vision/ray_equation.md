@@ -16,7 +16,7 @@ parent: Computer Vision
 基準点 $\vb\*{r}\_0$ から光線に沿って測った距離 (**弧長**, arc length) が $s$ となるような，光線上の点の位置ベクトルを $\vb\*{r}(s)$ とかくことにする ($\vb\*{r}(0) = \vb\*{r}\_0$ である)．
 
 <!-- ![弧長](figs/ray1.svg) -->
-<img src="figs/ray1.svg" width="110%">
+<img src="figs/ray1.svg" width="60%">
 
 弧長が $\Delta s$ だけ離れた２点 $\vb\*{r}(s), \vb\*{r}(s\+\Delta s)$ に対し，
 
@@ -37,9 +37,9 @@ parent: Computer Vision
 
 電荷のない空間のMaxwell方程式を出発点とする:
 \begin{align}
-& \curl{\vb\*{E}}(\vb\*{r}, t) = - \pdv{\vb\*{B}(\vb\*{r}, t)}{t} \\
-& \curl{\vb\*{H}}(\vb\*{r}, t) = \pdv{\vb\*{D}(\vb\*{r}, t)}{t} + \vb\*{j}(\vb\*{r}, t) \\
-& \div{\vb\*{B}(\vb\*{r}, t)} = \vb\*{0} \\
+& \curl{\vb\*{E}}(\vb\*{r}, t) = - \pdv{\vb\*{B}(\vb\*{r}, t)}{t} \\\\
+& \curl{\vb\*{H}}(\vb\*{r}, t) = \pdv{\vb\*{D}(\vb\*{r}, t)}{t} + \vb\*{j}(\vb\*{r}, t) \\\\
+& \div{\vb\*{B}(\vb\*{r}, t)} = \vb\*{0} \\\\
 & \div{\vb\*{D}(\vb\*{r}, t)} = \vb\*{0}
 \end{align}
 ただし $\vb\*{E}$ は電場 (electric vector), $\vb\*{H}$ は磁場 (magnetic vector), $\vb\*{D}$ は電束密度 (electric displacement), $\vb\*{B}$ は磁束密度 (magnetic induction), $\vb\*{j}$ は電流密度 (electric current density)．
