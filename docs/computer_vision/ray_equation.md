@@ -39,10 +39,10 @@ $$
 電荷のない空間のMaxwell方程式を出発点とする:
 $$
 \begin{align}
-& \curl{\vb\*{E}}(\vb\*{r}, t) = - \pdv{\vb\*{B}(\vb\*{r}, t)}{t} \\
-& \curl{\vb\*{H}}(\vb\*{r}, t) = \pdv{\vb\*{D}(\vb\*{r}, t)}{t} + \vb\*{j}(\vb\*{r}, t) \\
-& \div{\vb\*{B}(\vb\*{r}, t)} = \vb\*{0} \\
-& \div{\vb\*{D}(\vb\*{r}, t)} = \vb\*{0}
+& \curl{\vb*{E}}(\vb*{r}, t) = - \pdv{\vb*{B}(\vb*{r}, t)}{t} \\
+& \curl{\vb*{H}}(\vb*{r}, t) = \pdv{\vb*{D}(\vb*{r}, t)}{t} + \vb*{j}(\vb*{r}, t) \\
+& \div{\vb*{B}(\vb*{r}, t)} = \vb*{0} \\
+& \div{\vb*{D}(\vb*{r}, t)} = \vb*{0}
 \end{align}
 $$
 ただし $\vb\*{E}$ は電場 (electric vector), $\vb\*{H}$ は磁場 (magnetic vector), $\vb\*{D}$ は電束密度 (electric displacement), $\vb\*{B}$ は磁束密度 (magnetic induction), $\vb\*{j}$ は電流密度 (electric current density)．
