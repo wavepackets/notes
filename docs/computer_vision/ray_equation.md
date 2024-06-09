@@ -12,36 +12,35 @@ parent: Computer Vision
 光は，波動性 (回折など) を無視することで，１本の**光線** (ray) 上を伝わるとみなすことができる．
 このような単純化は幾何光学近似とよばれ，光の屈折の計算などでよく使われる．
 
-光線は，一様でない密度分布を通るとき，屈折のため曲線となる．
-下図のような光線を考える．
-光線上に基準点を１つとり，その位置ベクトルを $$\vb*{r}_0$$ とする．
-基準点 $$\vb*{r}_0$$ から光線に沿って測った距離 (**弧長**, arc length) が $$s$$ となるような光線上の点の位置ベクトルを $$\vb*{r}(s)$$ とかくことにする ($$\vb*{r}(0) = \vb*{r}_0$$ である)．
-
 <!-- ![弧長](figs/ray1.svg) -->
 <img src="figs/ray1.svg" width="60%">
 
-弧長が $$\Delta s$$ だけ離れた２点 $$\vb*{r}(s), \vb*{r}(s+\Delta s)$$ に対し，
+屈折のため，光線は一般に，上図のように曲線となる．
+光線上に基準点を１つとり，その位置ベクトルを $$\vb*{r}_0$$ とする．
+基準点 $$\vb*{r}_0$$ から光線に沿って測った距離 (**弧長**, arc length) が $$s$$ となるような光線上の点の位置ベクトルを $$\vb*{r}(s)$$ と書くこととする ($$\vb*{r}(0) = \vb*{r}_0$$ である)．
 $$
 \begin{equation}
 \dv{ \vb*{r} }{s} = \lim_{\Delta s \to 0} \frac{ \vb*{r}(s+\Delta s) - \vb*{r}(s) }{\Delta s}
 \end{equation}
 $$
-は，点 $$\vb*{r}(s)$$ における光線方向の単位ベクトルを表している．
-このベクトルと，屈折率 $$n \qty(= \frac{c_0}{c})$$ ($$c_0$$ は真空中の光速， $$c$$ は物質中の各点での光速) との間には，次のような式が成り立つ:
+は，点 $$\vb*{r}(s)$$ における光線方向の単位ベクトルを表す．
+
+
+この光線方向ベクトルの $$s$$ 方向への変化は，次式のように，屈折率 $$n$$ (真空中の光速 $$c_0$$ と物質中の光速 $$c$$ の比: $$n \equiv c_0 / c$$) の空間勾配に依存する:
 $$
 \begin{equation}
 	\dv{s} \qty( n \dv{\vb*{r}}{s} ) = \grad n \label{eq:rayeq}
 \end{equation}
 $$
-これを**ray equation**とよび，以下で導出する．
-
+この式を**ray equation**とよび，以下で導出する．
 
 ## 導出
 
 ### 前提
 
 光は電磁波であり，Maxwell方程式で記述される．
-電荷のない空間のMaxwell方程式は以下のとおりである:
+
+**電荷のない空間のMaxwell方程式**
 $$
 \begin{align}
 & \curl{\vb*{E}}(\vb*{r}, t) = - \pdv{\vb*{B}(\vb*{r}, t)}{t} \label{eq:maxwell1}\\
@@ -57,6 +56,33 @@ $$
 - $\vb\*{B}$, 磁束密度 (magnetic induction);
 - $\vb\*{j}$, 電流密度 (electric current density).
 
+これに加えて真空中と物質中で，それぞれ以下の構成方程式が成り立つ．
+
+**真空中の構成方程式**
+$$
+\begin{align}
+&\vb*{D}(\vb*{r},t) = \epsilon_0 \vb*{E}(\vb*{r},t) \label{eq:vacuum1} \\
+&\vb*{B}(\vb*{r},t) = \mu_0 \vb*{H}(\vb*{r},t) \label{eq:vacuum2}  \\
+&\vb*{j}(\vb*{r},t) = \vb*{0} \label{eq:vacuum3} 
+\end{align}
+$$
+ただし，
+- $\epsilon_0$, 真空中の誘電率 (dielectric constant of vacuum); 
+- $\mu_0$, 真空中の透磁率 (magnetic permeability of vacuum).
+
+
+**(線形な等方性の) 物質中の構成方程式**
+$$
+\begin{align}
+&\vb*{D}(\vb*{r},t) = \epsilon(\vb*{r}) \epsilon_0 \vb*{E}(\vb*{r},t)  \label{eq:material1} \\
+&\vb*{B}(\vb*{r},t) = \mu(\vb*{r}) \mu_0 \vb*{H}(\vb*{r},t) \label{eq:material2} \\
+&\vb*{j}(\vb*{r},t) = \sigma(\vb*{r}) \vb*{E}(\vb*{r}, t) \label{eq:material3}
+\end{align}
+$$
+ただし，
+- $\epsilon(\vb\*{r})$, 比誘電率 (dielectric function);
+- $\mu(\vb\*{r})$, 比透磁率 (magnetic permeability);
+- $\sigma(\vb\*{r})$, 比電導率 (specific conductivity).
 
 ## 参考文献
 - Träger, "Springer Handbook of Lasers and Optics," Springer, 2012. Sec. 2.1.
