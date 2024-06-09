@@ -74,15 +74,14 @@ $$
 
 前節のMaxwell方程式（と構成方程式）から，電磁場の波動方程式が得られる．
 
-まず真空の場合を考える．[^1]
+まず真空の場合を考える．
 式\eqref{eq:maxwell1}の両辺の $\curl$ をとると，
 $$ \begin{align*}
 \curl(\curl{\vb*{E}}) 
 & = - \curl(\pdv{\vb*{B}}{t}) = -\pdv{}{t} \qty(\curl{\vb*{B}}) \\
-& \overset{\mathrm{Eq. \ \eqref{eq:vacuum2}}}{=} - \mu_0 \pdv{}{t} \qty(\curl{\vb*{H}}) 
+\overset{\mathrm{Eq. \ \eqref{eq:vacuum2}}}{&=} - \mu_0 \pdv{}{t} \qty(\curl{\vb*{H}}) 
 \end{align*}$$
 
-[^1] test
 
 ### 参考文献
 - Träger, "Springer Handbook of Lasers and Optics," Springer, 2012. Sec. 2.1.
