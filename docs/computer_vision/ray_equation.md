@@ -41,9 +41,7 @@ $$
 
 光は電磁波であり，Maxwell方程式で記述される．
 
-{: .note-title }
-> 電荷のない空間のMaxwell方程式
-> 
+> **電荷のない空間のMaxwell方程式**
 > $$
 \begin{align}
 & \curl{\vb*{E}}(\vb*{r}, t) = - \pdv{\vb*{B}(\vb*{r}, t)}{t} \label{eq:maxwell1}\\
@@ -52,7 +50,6 @@ $$
 & \div{\vb*{D}(\vb*{r}, t)} = \vb*{0} \label{eq:maxwell4}
 \end{align}
 $$
-
 ただし,
 - $\vb\*{E}$, 電場 (electric vector);
 - $\vb\*{H}$, 磁場 (magnetic vector);
@@ -62,8 +59,8 @@ $$
 
 これに加えて真空中と物質中で，それぞれ以下の構成方程式が成り立つ．
 
-**真空中の構成方程式**
-$$
+> **真空中の構成方程式**
+> $$
 \begin{align}
 &\vb*{D}(\vb*{r},t) = \epsilon_0 \vb*{E}(\vb*{r},t) \label{eq:vacuum1} \\
 &\vb*{B}(\vb*{r},t) = \mu_0 \vb*{H}(\vb*{r},t) \label{eq:vacuum2}  \\
@@ -75,8 +72,8 @@ $$
 - $\mu_0$, 真空中の透磁率 (magnetic permeability of vacuum).
 
 
-**(線形な等方性の) 物質中の構成方程式**
-$$
+> **(線形な等方性の) 物質中の構成方程式**
+> $$
 \begin{align}
 &\vb*{D}(\vb*{r},t) = \epsilon(\vb*{r}) \epsilon_0 \vb*{E}(\vb*{r},t)  \label{eq:material1} \\
 &\vb*{B}(\vb*{r},t) = \mu(\vb*{r}) \mu_0 \vb*{H}(\vb*{r},t) \label{eq:material2} \\
@@ -92,8 +89,34 @@ $$
 
 ### 定常波解
 
+光の波面を考えるため，次のような定常波解を仮定する:
+$$
+\begin{align}
+\begin{cases}
+& \vb*{E}(\vb*{r}, t) = \vb*{e}(\vb*{r}) \exp{i k_0 L(\vb*{r})} \exp{-i \omega t} \\
+& \vb*{H}(\vb*{r}, t) = \vb*{h}(\vb*{r}) \exp{i k_0 L(\vb*{r})} \exp{-i \omega t} 
+\end{cases} \label{eq:wave}
+\end{align}
+$$
+ただし，
+- $$k_0$$は波数，$$\omega$$は角周波数で， $$\omega = c_0 k_0$$が成り立つとする;
+- $$L(\vb*{r})$$はoptical path lengthとよばれ， $$L = \mathrm{const.}$$の曲面が，光の波面を表す
 
+これらを，式\eqref{eq:maxwell1}$$\qty( \curl{\vb*{E}} = - \pdv{\vb*{B}}{t} )$$へ，式\eqref{eq:material2}$$\qty(\vb*{B} = \mu \mu_0 \vb*{H})$$とともに代入すると，
+$$
+\begin{align*}
+\curl( \vb*{e} \exp{i k_0 L} \exp{-i \omega t} ) = - \mu \mu_0 \pdv{}{t} \qty( \vb*{h} \exp{i k_0 L} \exp{-i \omega t} ) \\
+\therefore \qquad \curl( \vb*{e} \exp{i k_0 L}  ) \cancel{ \exp{-i \omega t} } = - \mu \mu_0 \vb*{h} \exp{i k_0 L} (-i \omega) \cancel{ \exp{-i \omega t}}
+\end{align*}
+$$
 
+また同様に，式\eqref{eq:maxwell2}$$\qty( \curl{\vb*{H}} = \pdv{\vb*{D}}{t} + \vb*{j} )$$へ，式\eqref{eq:material1} $$\qty( \vb*{D} = \epsilon \epsilon_0 \vb*{E} )$$とともに代入すると，
+$$
+\begin{align*}
+\curl( \vb*{h} \exp{i k_0 L} \exp{-i \omega t} ) = \epsilon \epsilon_0 \pdv{}{t} \qty( \vb*{e} \exp{i k_0 L} \exp{-i \omega t} ) \\
+\therefore \qquad \curl( \vb*{h} \exp{i k_0 L}  ) \cancel{ \exp{-i \omega t} } = \mu \mu_0 \vb*{e} \exp{i k_0 L} (-i \omega) \cancel{ \exp{-i \omega t}}
+\end{align*}
+$$
 
 
 ## 参考文献
