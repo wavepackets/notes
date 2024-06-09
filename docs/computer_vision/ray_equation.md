@@ -3,10 +3,11 @@ title: Ray Equation
 layout: default
 nav_order: 10
 parent: Computer Vision
-has_toc: true
 ---
 
 # Ray Equation
+
+{: .no_toc }
 
 光は，波動性 (回折など) を無視することで，１本の**光線** (ray) 上を伝わるとみなすことができる．
 このような単純化は幾何光学近似とよばれ，光の屈折の計算などでよく使われる．
@@ -34,9 +35,12 @@ $$
 $$
 
 以下，このray equationの導出について説明する．
-Maxwell方程式を出発点として，まず波動方程式を導出し，幾何光学近似を適用してeikonal方程式を求め，そこからray equationを得る．
+Maxwell方程式を出発点として，まず電磁場の波動方程式を導出し，幾何光学近似を適用してeikonal方程式を求め，そこからray equationを得る．
 
-### 前提: Maxwell方程式
+
+{:toc}
+
+## 前提: Maxwell方程式
 
 電荷のない空間のMaxwell方程式を出発点とする:
 $$
@@ -70,9 +74,9 @@ $$
 ただし $\epsilon(\vb\*{r})$ と $\mu(\vb\*{r})$ はそれぞれ比誘電率 (dielectric function) と比透磁率 (magnetic permeability)， $\sigma(\vb\*{r})$ は比電導率 (specific conductivity)である．
 
 
-### 波動方程式
+## 波動方程式
 
-前節のMaxwell方程式（と構成方程式）から，電磁場の波動方程式が得られる．
+前節のMaxwell方程式（と構成方程式）から，以下のようにして波動方程式が得られる．
 
 まず真空の場合を考える．
 式\eqref{eq:maxwell1}の両辺に $\curl$ をかけると，
@@ -84,13 +88,23 @@ $$ \begin{align*}
 \overset{\mathrm{Eq. \ \eqref{eq:vacuum1}}}{=} - \epsilon_0 \mu_0 \pdv[2]{\vb*{E}}{t} 
 \end{align*}$$
 
-右辺の $\curl(\curl{\vb\*{E}})$ は，第 $i$ 成分を考えると，
+左辺の $\curl(\curl{\vb\*{E}})$ は，第 $i$ 成分を考えると，
 $$ \begin{align*}
 & \qty( \curl(\curl{\vb*{E}}) )_i = \epsilon_{ijk} \pdv{}{x_j} \qty( \epsilon_{klm} \pdv{E_m}{x_l} ) = \epsilon_{ijk} \epsilon_{lmk} \pdv{E_m}{x_j}{x_l} \\
 &= \qty( \delta_{il}\delta_{jm} - \delta_{im} \delta_{jl} ) \pdv{E_m}{x_j}{x_l} 
 = \pdv{E_j}{x_i}{x_j} - \pdv[2]{E_i}{x_j}
 = \qty(\grad(\div{\vb*{E}}) - \laplacian{\vb*{E}})_i
 \end{align*} $$
+
+ただし
+$$\begin{align*}
+\delta_{ij} = \begin{cases} 1 \quad & (i=j) \\ 0 & (i\neq j) \end{cases}, \quad
+\epsilon_{ijk} = \begin{cases} 
+1 \quad & (i,j,k) \in \{ (1,2,3), (2,3,1), (3,1,2) \} \\
+-1 & (i,j,k) \in \{(3,2,1), (2,1,3), (1,3,2)\} \\
+0 & \mathrm{otherwise}
+\end{cases}
+\end{align*}$$
 
 式\eqref{eq:maxwell4}と\eqref{eq:vacuum1}より， $\div{\vb\*{D}} = \epsilon_0 \div{\vb\*{E}} = 0$ となるので，結局
 $$
@@ -99,12 +113,59 @@ $$
 \end{align*}
 $$
 
-以上をまとめると，
+以上をまとめれば，
 $$ 
 \begin{align*}
-\pdv[2]{\vb*{E}}{t} = \laplacian{\vb*{E}}
+\pdv[2]{\vb*{E}}{t} = \frac{1}{\epsilon_0 \mu_0} \laplacian{\vb*{E}}
 \end{align*}
 $$
 
-### 参考文献
+
+
+同様に，式\eqref{eq:maxwell2} (ただし式\eqref{eq:vacuum3}より $\vb\*{j}=\vb\*{0}$) の両辺に $\curl$ をかけると，
+$$
+\begin{align*}
+& \curl(\curl{\vb*{H}}) = \pdv{}{t} \qty(\curl{\vb*{D}})
+\overset{\mathrm{Eq. \ \eqref{eq:vacuum1}}}{=} \epsilon_0 \pdv{}{t} \qty(\curl{\vb*{E}}) \\
+& \overset{\mathrm{Eq. \ \eqref{eq:maxwell1}}}{=} \epsilon_0 \pdv{}{t} \qty(\pdv{\vb*{B}}{t}) 
+\overset{\mathrm{Eq. \ \eqref{eq:vacuum2}}}{=} \epsilon_0 \mu_0 \pdv[2]{\vb*{H}}{t} 
+\end{align*}
+$$
+
+左辺も同様に 
+$$
+\begin{align*}
+\curl(\curl{\vb\*{H}}) = \grad(\div{\vb*{H}}) - \laplacian{\vb*{H}}
+\end{align*}
+$$
+となり，式\eqref{eq:maxwell3}と\eqref{eq:vacuum2}より， $\div{\vb\*{B}} = \mu_0 \div{\vb\*{H}} = 0$ となるので，結局
+$$
+\begin{align*}
+\curl(\curl{\vb*{H}}) = -\laplacian{\vb*{H}}
+\end{align*}
+$$
+
+したがって，
+$$ 
+\begin{align*}
+\pdv[2]{\vb*{H}}{t} = \frac{1}{\epsilon_0 \mu_0} \laplacian{\vb*{H}}
+\end{align*}
+$$
+
+以上から，
+$$c_0 = \frac{1}{\sqrt{\epsilon_0 \mu_0}}$$
+とおけば，真空中の波動方程式
+$$
+\begin{align}
+\pdv[2]{\vb*{E}}{t} = c_0^2 \laplacian{\vb*{E}}, \quad \pdv[2]{\vb*{H}}{t} = c_0^2 \laplacian{\vb*{H}}
+\end{align}
+$$
+が得られた．
+$c_0$ は，真空中の電磁波の位相速度 (真空中の光速) である．
+
+
+
+
+
+## 参考文献
 - Träger, "Springer Handbook of Lasers and Optics," Springer, 2012. Sec. 2.1.
