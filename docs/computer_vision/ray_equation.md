@@ -8,12 +8,12 @@ parent: Computer Vision
 # Ray Equation
 
 光は，波動性 (回折など) を無視することで，１本の**光線** (ray) 上を伝わるとみなすことができる．
-このような単純化は幾何光学近似とよばれ，光の屈折などの計算でよく使われる．
+このような単純化は幾何光学近似とよばれ，光の屈折の計算などでよく使われる．
 
-光線は，一様でない密度分布を通るとき，それぞれの点で屈折して曲線となる．
+光線は，一様でない密度分布を通るとき，屈折のため曲線となる．
 下図のような光線を考える．
 光線上に基準点を１つとり，その位置ベクトルを $\vb\*{r}\_0$ とする．
-基準点 $\vb\*{r}\_0$ から光線に沿って測った距離 (**弧長**, arc length) が $s$ となるような，光線上の点の位置ベクトルを $\vb\*{r}(s)$ とかくことにする ($\vb\*{r}(0) = \vb\*{r}\_0$ である)．
+基準点 $\vb\*{r}\_0$ から光線に沿って測った距離 (**弧長**, arc length) が $s$ となるような光線上の点の位置ベクトルを $\vb\*{r}(s)$ とかくことにする ($\vb\*{r}(0) = \vb\*{r}\_0$ である)．
 
 <!-- ![弧長](figs/ray1.svg) -->
 <img src="figs/ray1.svg" width="60%">
@@ -47,7 +47,7 @@ $$
 $$
 ただし $\vb\*{E}$ は電場 (electric vector), $\vb\*{H}$ は磁場 (magnetic vector), $\vb\*{D}$ は電束密度 (electric displacement), $\vb\*{B}$ は磁束密度 (magnetic induction), $\vb\*{j}$ は電流密度 (electric current density)．
 
-また真空中の構成方程式は:
+真空中では，次のような構成方程式が成り立つ:
 $$
 \begin{align}
 &\vb*{D}(\vb*{r},t) = \epsilon_0 \vb*{E}(\vb*{r},t) \\
@@ -55,8 +55,17 @@ $$
 &\vb*{j}(\vb*{r},t) = \vb*{0}
 \end{align}
 $$
-ただし $\epsilon_0$ と $\mu_0$ はそれぞれ，真空中の誘電率と透磁率である．
+ただし $\epsilon_0$ と $\mu_0$ はそれぞれ，真空中の誘電率 (dielectric constant of vacuum) と透磁率 (magnetic permeability of vacuum) である．
 
+物質中では (線形な等方性物質の場合)，次のような構成方程式が成り立つ:
+$$
+\begin{align}
+&\vb*{D}(\vb*{r},t) = \epsilon(\vb*{r}) \epsilon_0 \vb*{E}(\vb*{r},t) \\
+&\vb*{B}(\vb*{r},t) = \mu(\vb*{r}) \mu_0 \vb*{H}(\vb*{r},t) \\
+&\vb*{j}(\vb*{r},t) = \sigma(\vb*{r}) \vb*{E}(\vb*{r}, t)
+\end{align}
+$$
+ただし $\epsilon(\vb\*{r})$ と $\mu(\vb\*{r})$ はそれぞれ，比誘電率 (dielectric function) と比透磁率 (magnetic permeability)， $\sigma(\vb\*{r})$ は比電導率 (specific conductivity)である．
 
 
 
