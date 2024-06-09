@@ -93,8 +93,8 @@ $$
 $$
 \begin{align}
 \begin{cases}
-& \vb*{E}(\vb*{r}, t) = \vb*{e}(\vb*{r}) \exp{i k_0 L(\vb*{r})} \exp{-i \omega t} \\
-& \vb*{H}(\vb*{r}, t) = \vb*{h}(\vb*{r}) \exp{i k_0 L(\vb*{r})} \exp{-i \omega t} 
+& \vb*{E}(\vb*{r}, t) = \vb*{e}(\vb*{r}) \exp(i k_0 L(\vb*{r})) \exp(-i \omega t) \\
+& \vb*{H}(\vb*{r}, t) = \vb*{h}(\vb*{r}) \exp(i k_0 L(\vb*{r})) \exp(-i \omega t) 
 \end{cases} \label{eq:wave}
 \end{align}
 $$
@@ -105,18 +105,21 @@ $$
 これらを，式\eqref{eq:maxwell1}$$\qty( \curl{\vb*{E}} = - \pdv{\vb*{B}}{t} )$$へ，式\eqref{eq:material2}$$\qty(\vb*{B} = \mu \mu_0 \vb*{H})$$とともに代入すると，
 $$
 \begin{align*}
-\curl( \vb*{e} \exp{i k_0 L} \exp{-i \omega t} ) = - \mu \mu_0 \pdv{}{t} \qty( \vb*{h} \exp{i k_0 L} \exp{-i \omega t} ) \\
-\therefore \qquad \curl( \vb*{e} \exp{i k_0 L}  ) \cancel{ \exp{-i \omega t} } = - \mu \mu_0 \vb*{h} \exp{i k_0 L} (-i \omega) \cancel{ \exp{-i \omega t}}
+\curl( \vb*{e} \exp(i k_0 L) \exp(-i \omega t) ) = - \mu \mu_0 \pdv{}{t} \qty( \vb*{h} \exp(i k_0 L) \exp(-i \omega t) ) \\
+\therefore \qquad \curl( \vb*{e} \exp(i k_0 L)  ) \cancel{ \exp(-i \omega t) } = - \mu \mu_0 \vb*{h} \exp(i k_0 L) (-i \omega) \cancel{ \exp(-i \omega t)}
 \end{align*}
 $$
 
-また同様に，式\eqref{eq:maxwell2}$$\qty( \curl{\vb*{H}} = \pdv{\vb*{D}}{t} + \vb*{j} )$$へ，式\eqref{eq:material1} $$\qty( \vb*{D} = \epsilon \epsilon_0 \vb*{E} )$$とともに代入すると，
+また同様に，式\eqref{eq:maxwell2}$$\qty( \curl{\vb*{H}} = \pdv{\vb*{D}}{t} + \vb*{j} )$$へ，式\eqref{eq:material1} $$\qty( \vb*{D} = \epsilon \epsilon_0 \vb*{E} )$$および式\eqref{eq:material3}$$\qty( \vb*{j} = \sigma \vb*{E} )$$とともに代入すると，
 $$
 \begin{align*}
-\curl( \vb*{h} \exp{i k_0 L} \exp{-i \omega t} ) = \epsilon \epsilon_0 \pdv{}{t} \qty( \vb*{e} \exp{i k_0 L} \exp{-i \omega t} ) \\
-\therefore \qquad \curl( \vb*{h} \exp{i k_0 L}  ) \cancel{ \exp{-i \omega t} } = \mu \mu_0 \vb*{e} \exp{i k_0 L} (-i \omega) \cancel{ \exp{-i \omega t}}
+\curl( \vb*{h} \exp(i k_0 L) \exp(-i \omega t) ) = \epsilon \epsilon_0 \pdv{}{t} \qty( \vb*{e} \exp(i k_0 L) \exp(-i \omega t) ) + \sigma \vb*{e}(\vb*{r}) \exp(i k_0 L(\vb*{r})) \exp(-i \omega t) \\
+\therefore \qquad \curl( \vb*{h} \exp(i k_0 L)  ) \cancel{ \exp(-i \omega t) } = \qty( \epsilon \epsilon_0 (-i \omega) + \sigma ) \vb*{e} \exp(i k_0 L) \cancel{ \exp(-i \omega t)}
 \end{align*}
 $$
+
+
+
 
 
 ## 参考文献
