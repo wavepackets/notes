@@ -43,6 +43,7 @@ $$
 
 {: .note-title }
 > 電荷のない空間のMaxwell方程式
+> 
 > $$
 \begin{align}
 & \curl{\vb*{E}}(\vb*{r}, t) = - \pdv{\vb*{B}(\vb*{r}, t)}{t} \label{eq:maxwell1}\\
