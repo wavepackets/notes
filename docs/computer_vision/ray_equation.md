@@ -78,8 +78,10 @@ $$
 式\eqref{eq:maxwell1}の両辺の $\curl$ をとると，
 $$ \begin{align*}
 \curl(\curl{\vb*{E}}) 
-& = - \curl(\pdv{\vb*{B}}{t}) = -\pdv{}{t} \qty(\curl{\vb*{B}}) \\
-\overset{\mathrm{Eq. \ \eqref{eq:vacuum2}}}{&=} - \mu_0 \pdv{}{t} \qty(\curl{\vb*{H}}) 
+& = - \curl(\pdv{\vb*{B}}{t}) = -\pdv{}{t} \qty(\curl{\vb*{B}})
+\overset{\mathrm{Eq. \ \eqref{eq:vacuum2}}}{=} - \mu_0 \pdv{}{t} \qty(\curl{\vb*{H}}) \\
+& \overset{\mathrm{Eqs. \ \eqref{eq:maxwell2}, \eqref{eq:vacuum3}}}{=} - \mu_0 \pdv{}{t} \qty(\pdv{\vb*{D}}{t}) 
+\overset{\mathrm{Eq. \ \eqref{eq:maxwell3}}}{=} - \epsilon_0 \mu_0 \pdv[2]{\vb*{H}}{t} 
 \end{align*}$$
 
 
