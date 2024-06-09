@@ -34,7 +34,7 @@ $$
 $$
 
 以下，このray equationの導出について説明する．
-Maxwell方程式を出発点として，まず波動方程式が導かれ，幾何光学近似を適用するとeikonal方程式が得られ，そこからray equationが導出される．
+Maxwell方程式を出発点として，まず波動方程式を導出し，幾何光学近似を適用してeikonal方程式を求め，そこからray equationを得る．
 
 ### 前提: Maxwell方程式
 
@@ -83,21 +83,28 @@ $$ \begin{align*}
 & \overset{\mathrm{Eqs. \ \eqref{eq:maxwell2}, \eqref{eq:vacuum3}}}{=} - \mu_0 \pdv{}{t} \qty(\pdv{\vb*{D}}{t}) 
 \overset{\mathrm{Eq. \ \eqref{eq:vacuum1}}}{=} - \epsilon_0 \mu_0 \pdv[2]{\vb*{E}}{t} 
 \end{align*}$$
-また $\curl(\curl{\vb\*{E}})$ は，第 $i$ 成分を考えると，
+
+右辺の $\curl(\curl{\vb\*{E}})$ は，第 $i$ 成分を考えると，
 $$ \begin{align*}
-\qty( \curl(\curl{\vb*{E}}) )_i = \epsilon_{ijk} \pdv{}{x_j} \qty( \epsilon_{klm} \pdv{E_m}{x_l} ) = \epsilon_{ijk} \epsilon_{lmk} \pdv{E_m}{x_j}{x_l} \\
+& \qty( \curl(\curl{\vb*{E}}) )_i = \epsilon_{ijk} \pdv{}{x_j} \qty( \epsilon_{klm} \pdv{E_m}{x_l} ) = \epsilon_{ijk} \epsilon_{lmk} \pdv{E_m}{x_j}{x_l} \\
 &= \qty( \delta_{il}\delta_{jm} - \delta_{im} \delta_{jl} ) \pdv{E_m}{x_j}{x_l} 
 = \pdv{E_j}{x_i}{x_j} - \pdv[2]{E_i}{x_j}
-= \qty(\grad{\div{\vb*{E}}} - \laplacian{\vb*{E}})_i
+= \qty(\grad(\div{\vb*{E}}) - \laplacian{\vb*{E}})_i
 \end{align*} $$
-ただし式\eqref{eq:maxwell4}と\eqref{eq:vacuum1}より， $\div{\vb\*{D}} = \epsilon_0 \div{\vb\*{E}} = 0$ となるので，結局
-$$ \begin{align*}
+
+式\eqref{eq:maxwell4}と\eqref{eq:vacuum1}より， $\div{\vb\*{D}} = \epsilon_0 \div{\vb\*{E}} = 0$ となるので，結局
+$$
+\begin{align*}
 \curl(\curl{\vb*{E}}) = -\laplacian{\vb*{E}}
-\end{align*} $$
+\end{align*}
+$$
+
 以上をまとめると，
-$$ \begin{align*}
+$$ 
+\begin{align*}
 \pdv[2]{\vb*{E}}{t} = \laplacian{\vb*{E}}
-\end{align*} $$
+\end{align*}
+$$
 
 ### 参考文献
 - Träger, "Springer Handbook of Lasers and Optics," Springer, 2012. Sec. 2.1.
