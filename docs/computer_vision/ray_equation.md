@@ -3,6 +3,7 @@ title: Ray Equation
 layout: default
 nav_order: 10
 parent: Computer Vision
+has_toc: true
 ---
 
 # Ray Equation
@@ -31,42 +32,53 @@ $$
 	\dv{s} \qty( n \dv{\vb*{r}}{s} ) = \grad n \label{eq:rayeq}
 \end{equation}
 $$
+
 以下，このray equationの導出について説明する．
+Maxwell方程式を出発点として，まず波動方程式が導かれ，幾何光学近似を適用するとeikonal方程式が得られ，そこからray equationが導出される．
 
-
-### 前提
+### 前提: Maxwell方程式
 
 電荷のない空間のMaxwell方程式を出発点とする:
 $$
 \begin{align}
-& \curl{\vb*{E}}(\vb*{r}, t) = - \pdv{\vb*{B}(\vb*{r}, t)}{t} \\
-& \curl{\vb*{H}}(\vb*{r}, t) = \pdv{\vb*{D}(\vb*{r}, t)}{t} + \vb*{j}(\vb*{r}, t) \\
-& \div{\vb*{B}(\vb*{r}, t)} = \vb*{0} \\
-& \div{\vb*{D}(\vb*{r}, t)} = \vb*{0}
+& \curl{\vb*{E}}(\vb*{r}, t) = - \pdv{\vb*{B}(\vb*{r}, t)}{t} \label{eq:maxwell1}\\
+& \curl{\vb*{H}}(\vb*{r}, t) = \pdv{\vb*{D}(\vb*{r}, t)}{t} + \vb*{j}(\vb*{r}, t) \label{eq:maxwell2} \\
+& \div{\vb*{B}(\vb*{r}, t)} = \vb*{0} \label{eq:maxwell3} \\
+& \div{\vb*{D}(\vb*{r}, t)} = \vb*{0} \label{eq:maxwell4}
 \end{align}
 $$
-ただし $\vb\*{E}$ は電場 (electric vector), $\vb\*{H}$ は磁場 (magnetic vector), $\vb\*{D}$ は電束密度 (electric displacement), $\vb\*{B}$ は磁束密度 (magnetic induction), $\vb\*{j}$ は電流密度 (electric current density)．
+ただし $\vb\*{E}$ は電場 (electric vector), $\vb\*{H}$ は磁場 (magnetic vector), $\vb\*{D}$ は電束密度 (electric displacement), $\vb\*{B}$ は磁束密度 (magnetic induction), $\vb\*{j}$ は電流密度 (electric current density)である．
 
 真空中では，次のような構成方程式が成り立つ:
 $$
 \begin{align}
-&\vb*{D}(\vb*{r},t) = \epsilon_0 \vb*{E}(\vb*{r},t) \\
-&\vb*{B}(\vb*{r},t) = \mu_0 \vb*{H}(\vb*{r},t) \\
-&\vb*{j}(\vb*{r},t) = \vb*{0}
+&\vb*{D}(\vb*{r},t) = \epsilon_0 \vb*{E}(\vb*{r},t) \label{eq:vacuum1} \\
+&\vb*{B}(\vb*{r},t) = \mu_0 \vb*{H}(\vb*{r},t) \label{eq:vacuum2}  \\
+&\vb*{j}(\vb*{r},t) = \vb*{0} \label{eq:vacuum3} 
 \end{align}
 $$
-ただし $\epsilon_0$ と $\mu_0$ はそれぞれ，真空中の誘電率 (dielectric constant of vacuum) と透磁率 (magnetic permeability of vacuum) である．
+ただし $\epsilon_0$ と $\mu_0$ はそれぞれ真空中の誘電率 (dielectric constant of vacuum) と透磁率 (magnetic permeability of vacuum) である．
 
 物質中では (線形な等方性物質の場合)，次のような構成方程式が成り立つ:
 $$
 \begin{align}
-&\vb*{D}(\vb*{r},t) = \epsilon(\vb*{r}) \epsilon_0 \vb*{E}(\vb*{r},t) \\
-&\vb*{B}(\vb*{r},t) = \mu(\vb*{r}) \mu_0 \vb*{H}(\vb*{r},t) \\
-&\vb*{j}(\vb*{r},t) = \sigma(\vb*{r}) \vb*{E}(\vb*{r}, t)
+&\vb*{D}(\vb*{r},t) = \epsilon(\vb*{r}) \epsilon_0 \vb*{E}(\vb*{r},t)  \label{eq:material1} \\
+&\vb*{B}(\vb*{r},t) = \mu(\vb*{r}) \mu_0 \vb*{H}(\vb*{r},t) \label{eq:material2} \\
+&\vb*{j}(\vb*{r},t) = \sigma(\vb*{r}) \vb*{E}(\vb*{r}, t) \label{eq:material3}
 \end{align}
 $$
-ただし $\epsilon(\vb\*{r})$ と $\mu(\vb\*{r})$ はそれぞれ，比誘電率 (dielectric function) と比透磁率 (magnetic permeability)， $\sigma(\vb\*{r})$ は比電導率 (specific conductivity)である．
+ただし $\epsilon(\vb\*{r})$ と $\mu(\vb\*{r})$ はそれぞれ比誘電率 (dielectric function) と比透磁率 (magnetic permeability)， $\sigma(\vb\*{r})$ は比電導率 (specific conductivity)である．
 
+
+### 波動方程式
+
+前節のMaxwell方程式（と構成方程式）から，電磁場の波動方程式が得られる．
+
+まず真空の場合を考える．
+式\eqref{eq:maxwell1}の両辺の $\curl$ をとると，
+$$ \begin{align*}
+\curl(\curl{\vb*{E}}) = - \curl(\pdv{\vb*{B}}{t}) = -\pdv{}{t} \qty(\curl{\vb*{B}}) \overset{Eq. \eqref{eq:vacuum2}}{=} - \mu_0 \pdv{}{t} \qty(\curl{\vb*{H}}) 
+\end{align*}$$
 
 
 ### 参考文献
