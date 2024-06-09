@@ -104,20 +104,42 @@ $$
 
 これらを，式\eqref{eq:maxwell1}$$\qty( \curl{\vb*{E}} = - \pdv{\vb*{B}}{t} )$$へ，式\eqref{eq:material2}$$\qty(\vb*{B} = \mu \mu_0 \vb*{H})$$とともに代入すると，
 $$
-\begin{align*}
-\curl( \vb*{e} \exp(i k_0 L) \exp(-i \omega t) ) = - \mu \mu_0 \pdv{}{t} \qty( \vb*{h} \exp(i k_0 L) \exp(-i \omega t) ) \\
-\therefore \qquad \curl( \vb*{e} \exp(i k_0 L)  ) \cancel{ \exp(-i \omega t) } = - \mu \mu_0 \vb*{h} \exp(i k_0 L) (-i \omega) \cancel{ \exp(-i \omega t)}
-\end{align*}
+\begin{align}
+\curl( \vb*{e} \exp(i k_0 L) \exp(-i \omega t) ) = - \mu \mu_0 \pdv{}{t} \qty( \vb*{h} \exp(i k_0 L) \exp(-i \omega t) ) \nonumber \\
+\therefore \qquad \curl( \vb*{e} \exp(i k_0 L)  ) \cancel{ \exp(-i \omega t) } = - \mu \mu_0 \vb*{h} \exp(i k_0 L) (-i \omega) \cancel{ \exp(-i \omega t)} \nonumber \\
+\therefore \qquad \curl( \vb*{e} \exp(i k_0 L)  )  = i \omega \mu \mu_0 \vb*{h} \exp(i k_0 L) \label{eq:wave2a}
+\end{align}
 $$
 
 また同様に，式\eqref{eq:maxwell2}$$\qty( \curl{\vb*{H}} = \pdv{\vb*{D}}{t} + \vb*{j} )$$へ，式\eqref{eq:material1} $$\qty( \vb*{D} = \epsilon \epsilon_0 \vb*{E} )$$および式\eqref{eq:material3}$$\qty( \vb*{j} = \sigma \vb*{E} )$$とともに代入すると，
 $$
+\begin{align}
+\curl( \vb*{h} \exp(i k_0 L) \exp(-i \omega t) ) = \epsilon \epsilon_0 \pdv{}{t} \qty( \vb*{e} \exp(i k_0 L) \exp(-i \omega t) ) + \sigma \vb*{e} \exp(i k_0 L) \exp(-i \omega t) \nonumber\\
+\therefore \qquad \curl( \vb*{h} \exp(i k_0 L)  ) \cancel{ \exp(-i \omega t) } = \qty( \epsilon \epsilon_0 (-i \omega) + \sigma ) \vb*{e} \exp(i k_0 L) \cancel{ \exp(-i \omega t)} \nonumber \\
+\therefore \qquad \curl( \vb*{h} \exp(i k_0 L)  )  = \qty( -i \omega \epsilon \epsilon_0 + \sigma ) \vb*{e} \exp(i k_0 L) \label{eq:wave2b}
+\end{align}
+$$
+
+式\eqref{eq:wave}の定常波解は，式\eqref{eq:maxwell3}$$\qty( \div{\vb*{B}(\vb*{r}, t)} = \vb*{0} )$$を自動的に満たす．
+実際に，式\eqref{eq:material2}$$\qty(\vb*{B} = \mu \mu_0 \vb*{H})$$とともに代入すると，
+$$
 \begin{align*}
-\curl( \vb*{h} \exp(i k_0 L) \exp(-i \omega t) ) = \epsilon \epsilon_0 \pdv{}{t} \qty( \vb*{e} \exp(i k_0 L) \exp(-i \omega t) ) + \sigma \vb*{e}(\vb*{r}) \exp(i k_0 L(\vb*{r})) \exp(-i \omega t) \\
-\therefore \qquad \curl( \vb*{h} \exp(i k_0 L)  ) \cancel{ \exp(-i \omega t) } = \qty( \epsilon \epsilon_0 (-i \omega) + \sigma ) \vb*{e} \exp(i k_0 L) \cancel{ \exp(-i \omega t)}
+\div( \vb*{B} ) = \div( \mu \mu_0 \vb*{H} ) = \exp(-i \omega t) \div( \mu \mu_0 \vb*{h} \exp(i k_0 L) )
 \end{align*}
 $$
 
+これに先ほど求めた式\eqref{eq:wave2a}を代入すれば，
+$$
+\begin{align*}
+\exp(-i \omega t) \div( \mu \mu_0 \vb*{h} \exp(i k_0 L) ) = \frac{1}{i \omega} \exp(-i \omega t) \div( \curl( \vb*{h} \exp(i k_0 L) ))
+\end{align*}
+$$
+となる．
+
+
+
+
+他方で，式\eqref{eq:wave}の定常波解が，式\eqref{eq:maxwell4}$$\qty( \div{\vb*{D}(\vb*{r}, t)} = \vb*{0} )$$を満たすには以下の条件が必要である．
 
 
 
