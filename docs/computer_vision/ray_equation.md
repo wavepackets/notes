@@ -15,18 +15,19 @@ parent: Computer Vision
 <!-- ![弧長](figs/ray1.svg) -->
 <img src="figs/ray1.svg" width="60%">
 
-屈折のため，光線は一般に，上図のように曲線となる．
+屈折した光線は，一般に，上図のように曲線となる．
 光線上に基準点を１つとり，その位置ベクトルを $$\vb*{r}_0$$ とする．
 基準点 $$\vb*{r}_0$$ から光線に沿って測った距離 (**弧長**, arc length) が $$s$$ となるような光線上の点の位置ベクトルを $$\vb*{r}(s)$$ と書くこととする ($$\vb*{r}(0) = \vb*{r}_0$$ である)．
+このとき，
 $$
 \begin{equation}
 \dv{ \vb*{r} }{s} = \lim_{\Delta s \to 0} \frac{ \vb*{r}(s+\Delta s) - \vb*{r}(s) }{\Delta s}
 \end{equation}
 $$
-は，点 $$\vb*{r}(s)$$ における光線方向の単位ベクトルを表す．
+は，点 $$\vb*{r}(s)$$ における(単位)光線方向ベクトルを表す．
 
 
-この光線方向ベクトルの $$s$$ 方向への変化は，次式のように，屈折率 $$n$$ (真空中の光速 $$c_0$$ と物質中の光速 $$c$$ の比: $$n \equiv c_0 / c$$) の空間勾配に依存する:
+この光線方向ベクトルの変化量は，次式のように，屈折率 $$n$$ (真空中の光速 $$c_0$$ と物質中の光速 $$c$$ の比: $$n \equiv c_0 / c$$) の空間勾配で決まる:
 $$
 \begin{equation}
 	\dv{s} \qty( n \dv{\vb*{r}}{s} ) = \grad n \label{eq:rayeq}
@@ -40,8 +41,9 @@ $$
 
 光は電磁波であり，Maxwell方程式で記述される．
 
-**電荷のない空間のMaxwell方程式**
-$$
+{: .note-title }
+> 電荷のない空間のMaxwell方程式
+> $$
 \begin{align}
 & \curl{\vb*{E}}(\vb*{r}, t) = - \pdv{\vb*{B}(\vb*{r}, t)}{t} \label{eq:maxwell1}\\
 & \curl{\vb*{H}}(\vb*{r}, t) = \pdv{\vb*{D}(\vb*{r}, t)}{t} + \vb*{j}(\vb*{r}, t) \label{eq:maxwell2} \\
@@ -49,6 +51,7 @@ $$
 & \div{\vb*{D}(\vb*{r}, t)} = \vb*{0} \label{eq:maxwell4}
 \end{align}
 $$
+
 ただし,
 - $\vb\*{E}$, 電場 (electric vector);
 - $\vb\*{H}$, 磁場 (magnetic vector);
@@ -83,6 +86,14 @@ $$
 - $\epsilon(\vb\*{r})$, 比誘電率 (dielectric function);
 - $\mu(\vb\*{r})$, 比透磁率 (magnetic permeability);
 - $\sigma(\vb\*{r})$, 比電導率 (specific conductivity).
+
+
+
+### 定常波解
+
+
+
+
 
 ## 参考文献
 - Träger, "Springer Handbook of Lasers and Optics," Springer, 2012. Sec. 2.1.
