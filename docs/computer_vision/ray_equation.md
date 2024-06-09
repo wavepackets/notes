@@ -75,15 +75,29 @@ $$
 前節のMaxwell方程式（と構成方程式）から，電磁場の波動方程式が得られる．
 
 まず真空の場合を考える．
-式\eqref{eq:maxwell1}の両辺の $\curl$ をとると，
+式\eqref{eq:maxwell1}の両辺に $\curl$ をかけると，
 $$ \begin{align*}
-\curl(\curl{\vb*{E}}) 
-& = - \curl(\pdv{\vb*{B}}{t}) = -\pdv{}{t} \qty(\curl{\vb*{B}})
+&\curl(\curl{\vb*{E}}) 
+= - \curl(\pdv{\vb*{B}}{t}) = -\pdv{}{t} \qty(\curl{\vb*{B}})
 \overset{\mathrm{Eq. \ \eqref{eq:vacuum2}}}{=} - \mu_0 \pdv{}{t} \qty(\curl{\vb*{H}}) \\
 & \overset{\mathrm{Eqs. \ \eqref{eq:maxwell2}, \eqref{eq:vacuum3}}}{=} - \mu_0 \pdv{}{t} \qty(\pdv{\vb*{D}}{t}) 
-\overset{\mathrm{Eq. \ \eqref{eq:maxwell3}}}{=} - \epsilon_0 \mu_0 \pdv[2]{\vb*{H}}{t} 
+\overset{\mathrm{Eq. \ \eqref{eq:vacuum1}}}{=} - \epsilon_0 \mu_0 \pdv[2]{\vb*{E}}{t} 
 \end{align*}$$
-
+また $\curl(\curl{\vb\*{E}})$ は，第 $i$ 成分を考えると，
+$$ \begin{align*}
+\qty( \curl(\curl{\vb*{E}}) )_i = \epsilon_{ijk} \pdv{}{x_j} \qty( \epsilon_{klm} \pdv{E_m}{x_l} ) = \epsilon_{ijk} \epsilon_{lmk} \pdv{E_m}{x_j}{x_l} \\
+&= \qty( \delta_{il}\delta_{jm} - \delta_{im} \delta_{jl} ) \pdv{E_m}{x_j}{x_l} 
+= \pdv{E_j}{x_i}{x_j} - \pdv[2]{E_i}{x_j}
+= \qty(\grad{\div{\vb*{E}}} - \laplacian{\vb*{E}})_i
+\end{align*} $$
+ただし式\eqref{eq:maxwell4}と\eqref{eq:vacuum1}より， $\div{\vb\*{D}} = \epsilon_0 \div{\vb\*{E}} = 0$ となるので，結局
+$$ \begin{align*}
+\curl(\curl{\vb*{E}}) = -\laplacian{\vb*{E}}
+\end{align*} $$
+以上をまとめると，
+$$ \begin{align*}
+\pdv[2]{\vb*{E}}{t} = \laplacian{\vb*{E}}
+\end{align*} $$
 
 ### 参考文献
 - Träger, "Springer Handbook of Lasers and Optics," Springer, 2012. Sec. 2.1.
