@@ -135,7 +135,7 @@ $$
 左辺も同様に 
 $$
 \begin{align*}
-\curl(\curl{\vb\*{H}}) = \grad(\div{\vb*{H}}) - \laplacian{\vb*{H}}
+\curl(\curl{\vb*{H}}) = \grad(\div{\vb*{H}}) - \laplacian{\vb*{H}}
 \end{align*}
 $$
 となり，式\eqref{eq:maxwell3}と\eqref{eq:vacuum2}より， $\div{\vb\*{B}} = \mu_0 \div{\vb\*{H}} = 0$ となるので，結局
@@ -153,15 +153,27 @@ $$
 $$
 
 以上から，
-$$c_0 = \frac{1}{\sqrt{\epsilon_0 \mu_0}}$$
-とおけば，真空中の波動方程式
 $$
 \begin{align}
-\pdv[2]{\vb*{E}}{t} = c_0^2 \laplacian{\vb*{E}}, \quad \pdv[2]{\vb*{H}}{t} = c_0^2 \laplacian{\vb*{H}}
+\pdv[2]{\vb*{E}}{t} = \frac{1}{\epsilon_0 \mu_0} \laplacian{\vb*{E}}, \quad \pdv[2]{\vb*{H}}{t} = \frac{1}{\epsilon_0 \mu_0} \laplacian{\vb*{H}}
 \end{align}
 $$
 が得られた．
-$c_0$ は，真空中の電磁波の位相速度 (真空中の光速) である．
+真空中の電磁波の位相速度 (真空中の光速) は $c_0 = \frac{1}{\epsilon_0 \mu_0}$ だとわかる．
+
+
+真空中ではなく物質中の場合，構成方程式が変わる．
+ただ，電流が無い場合 ($\vb\*{j} = \vb\*{0}$) には，真空中の構成方程式 (式\eqref{eq:vacuum1}, \eqref{eq:vacuum2}) と物質中の構成方程式 (式\eqref{eq:material1}, \eqref{eq:material2}) が，右辺の係数のみ異なる {\small (電流があるとどうなる...?)}．
+それ以外は真空中と物質中で等しいので，得られる波動方程式は  $\epsilon_0 \to \epsilon\epsilon_0, \mu_0 \to \mu \mu_0$ と置き換えたもの，つまり
+$$
+\begin{align}
+\pdv[2]{\vb*{E}}{t} = \frac{1}{\epsilon \epsilon_0 \mu \mu_0} \laplacian{\vb*{E}}, \quad \pdv[2]{\vb*{H}}{t} = \frac{1}{\epsilon \epsilon_0 \mu \mu_0} \laplacian{\vb*{H}}
+\end{align}
+$$
+となる．
+ここで $n = \sqrt{\epsilon \mu}$ とおけば，物質中の光速は 
+$$c = \frac{1}{\sqrt{\epsilon \mu \epsilon_0 \mu_0}} = \frac{c_0}{n}$$
+である．この $n$ を屈折率とよぶ．
 
 
 
