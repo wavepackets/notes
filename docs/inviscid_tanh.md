@@ -72,7 +72,7 @@ $$\begin{align}
 以下、３ステップに分けてこれらの式を整理します。
 ただし、$\dv{U}{y}$ を $U'$ と書くことにします。
 
-\paragraph{(ステップ1)} $\pdv{x}(\ref{eq:a1}) + \pdv{y}(\ref{eq:a2}) + \pdv{z}(\ref{eq:a3})$ とすると、
+**(ステップ1)** $\pdv{x}(\ref{eq:a1}) + \pdv{y}(\ref{eq:a2}) + \pdv{z}(\ref{eq:a3})$ とすると、
 
 $$\begin{equation*}
 \pdv{t} \underbrace{\qty( \pdv{u}{x} + \pdv{v}{y} + \pdv{z}{z} )}_{=0 \ (\because \ (\ref{eq:a4}))} 
@@ -85,7 +85,7 @@ $$\begin{equation*}
 \therefore \quad \laplacian{p} = -2U' \pdv{v}{x}
 \end{equation*}$$
 
-\paragraph{(ステップ2)} $\nabla^2 (\ref{eq:a2})$ とすると、
+**(ステップ2)** $\nabla^2 (\ref{eq:a2})$ とすると、
 
 $$\begin{gather*}
 \pdv{t}\laplacian{v} = -\pdv[2]{x} \qty(U\pdv{v}{x}) - \pdv[2]{y} \qty(U\pdv{v}{x}) - \pdv[2]{z} \qty(U\pdv{v}{x}) - \pdv{y} \laplacian{p} \\
@@ -99,7 +99,7 @@ $$\begin{equation*}
 \pdv[2]{y} \qty(U\pdv{v}{x}) = \pdv{y} \qty(U' \pdv{v}{x} + U \pdv{v}{x}{y}) = U'' \pdv{v}{x} + 2U' \pdv{v}{x}{y} + U \pdv{x} \pdv[2]{v}{y}
 \end{equation*}$$
 
-と、式(\ref{eq:a5})を使った
+と、ステップ1で得られた式による
 
 $$\begin{equation*}
 -\pdv{y} \laplacian{p} = -\pdv{y} \qty(-2U' \pdv{v}{x}) = 2U'' \pdv{v}{x} + 2U' \pdv{v}{x}{y}
@@ -107,18 +107,19 @@ $$\begin{equation*}
 
 を使っています。
 
-\paragraph{(ステップ3)}
+**(ステップ3)**
 
 $$\begin{equation*}
 \eta = \pdv{u}{z} - \pdv{w}{x}
 \end{equation*}$$
-という値を考えます。〔$y$方向の渦度です〕。
+という値を考えて、 $u$と$w$をまとめます。〔$y$方向の渦度です〕。
 
 $\pdv{z}(\ref{eq:a1}) - \pdv{x}(\ref{eq:a3})$ とすると、
 
 $$\begin{equation*}
 \pdv{t} \pdv{u}{z} - \pdv{t} \pdv{w}{x} = -U' \pdv{v}{z} - U \pdv{x} \pdv{u}{z} - \cancel{\pdv{p}{x}{z}} + U \pdv{x} \pdv{w}{x} + \cancel{\pdv{p}{x}{z}}
 \end{equation*}$$
+
 $$\begin{equation*}
 \therefore \quad \qty[ \pdv{t} + U \pdv{x} ] \eta = -U' \pdv{v}{z}
 \end{equation*}$$
