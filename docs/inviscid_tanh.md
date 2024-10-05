@@ -47,7 +47,7 @@ $$\begin{align*}
 このとき、
 
 {: .new-title}
-> 微小擾乱の線形化された発展方程式 (非圧縮・非粘性)
+> 微小擾乱についての、線形化された発展方程式 (非圧縮・非粘性)
 > 
 > $$ \begin{align}
 & \pdv{u_i}{t} = - u_j \pdv{U_i}{x_j} - U_j \pdv{u_i}{x_j} - \pdv{p}{x_i} \\
@@ -69,42 +69,72 @@ $$\begin{align}
 & \pdv{u}{x} + \pdv{v}{y} + \pdv{w}{z} = 0 \label{eq:a4}
 \end{align}$$
 
-以下 $\dv{U}{y}$ を $U'$ と書くことにします。
-$\pdv{x}(\ref{eq:a1}) + \pdv{y}(\ref{eq:a2}) + \pdv{z}(\ref{eq:a3})$ とすると、
+以下、３ステップに分けてこれらの式を整理します。
+ただし、$\dv{U}{y}$ を $U'$ と書くことにします。
+
+\paragraph{(ステップ1)} $\pdv{x}(\ref{eq:a1}) + \pdv{y}(\ref{eq:a2}) + \pdv{z}(\ref{eq:a3})$ とすると、
 
 $$\begin{equation*}
-\pdv{t} \underbrace{\qty( \pdv{u}{x} + \pdv{v}{y} + \pdv{z}{z} )}_{=0 (\because \ (\ref{eq:a4}))} 
-= -U' \pdv{v}{x} - U\pdv{x} \underbrace{\qty( \pdv{u}{x} + \pdv{v}{y} + \pdv{z}{z} )}_{=0 (\because \ (\ref{eq:a4}))}
+\pdv{t} \underbrace{\qty( \pdv{u}{x} + \pdv{v}{y} + \pdv{z}{z} )}_{=0 \ (\because \ (\ref{eq:a4}))} 
+= -U' \pdv{v}{x} - U\pdv{x} \underbrace{\qty( \pdv{u}{x} + \pdv{v}{y} + \pdv{z}{z} )}_{=0 \ (\because \ (\ref{eq:a4}))}
 -U' \pdv{v}{x}
 -\underbrace{\qty(\pdv[2]{x} + \pdv[2]{y} + \pdv[2]{z})}_{\laplacian} p
 \end{equation*}$$
 
-$$\begin{equation}
-\therefore \quad \laplacian{p} = -2U' \pdv{v}{x} \label{eq:a5}
-\end{equation}$$
+$$\begin{equation*}
+\therefore \quad \laplacian{p} = -2U' \pdv{v}{x}
+\end{equation*}$$
 
-また、 $\nabla^2 (\ref{eq:a2})$ とすると、
+\paragraph{(ステップ2)} $\nabla^2 (\ref{eq:a2})$ とすると、
 
-$$\begin{gather}
-\pdv{t}\laplacian{v} = -\pdv[2]{x} \qty(U\pdv{v}{x}) - \pdv[2]{y} \qty(U\pdv{v}{x}) - \pdv[2]{z} \qty(U\pdv{v}{x}) - \pdv{y} \laplacian{p} \nonumber \\
-\therefore \quad \pdv{t} \laplacian{v} = - U \pdv{x} \laplacian{v} - U'' \pdv{v}{x} - \cancel{2U' \pdv{v}{x}{y}}  + 2U'' \pdv{v}{x} + \cancel{2U' \pdv{v}{x}{y}} \nonumber \\
-\therefore \quad \qty[ \qty(\pdv{t} + U \pdv{x}) \laplacian - U'' \pdv{x} ] v = 0 \label{eq:a6} 
-\end{gather}$$
+$$\begin{gather*}
+\pdv{t}\laplacian{v} = -\pdv[2]{x} \qty(U\pdv{v}{x}) - \pdv[2]{y} \qty(U\pdv{v}{x}) - \pdv[2]{z} \qty(U\pdv{v}{x}) - \pdv{y} \laplacian{p} \\
+\therefore \quad \pdv{t} \laplacian{v} = - U \pdv{x} \laplacian{v} - U'' \pdv{v}{x} - \cancel{2U' \pdv{v}{x}{y}}  + 2U'' \pdv{v}{x} + \cancel{2U' \pdv{v}{x}{y}} \\
+\therefore \quad \qty[ \qty(\pdv{t} + U \pdv{x}) \laplacian - U'' \pdv{x} ] v = 0
+\end{gather*}$$
 
-ただし、
+ただし第１式から第２式への変形では、
 
 $$\begin{equation*}
 \pdv[2]{y} \qty(U\pdv{v}{x}) = \pdv{y} \qty(U' \pdv{v}{x} + U \pdv{v}{x}{y}) = U'' \pdv{v}{x} + 2U' \pdv{v}{x}{y} + U \pdv{x} \pdv[2]{v}{y}
 \end{equation*}$$
 
-および、式(\ref{eq:a5})より
+と、式(\ref{eq:a5})を使った
 
 $$\begin{equation*}
 -\pdv{y} \laplacian{p} = -\pdv{y} \qty(-2U' \pdv{v}{x}) = 2U'' \pdv{v}{x} + 2U' \pdv{v}{x}{y}
 \end{equation*}$$
 
-となることを使っています。
+を使っています。
 
+\paragraph{(ステップ3)}
+
+$$\begin{equation*}
+\eta = \pdv{u}{z} - \pdv{w}{x}
+\end{equation*}$$
+という値を考えます。〔$y$方向の渦度です〕。
+
+$\pdv{z}(\ref{eq:a1}) - \pdv{x}(\ref{eq:a3})$ とすると、
+
+$$\begin{equation*}
+\pdv{t} \pdv{u}{z} - \pdv{t} \pdv{w}{x} = -U' \pdv{v}{z} - U \pdv{x} \pdv{u}{z} - \cancel{\pdv{p}{x}{z}} + U \pdv{x} \pdv{w}{x} + \cancel{\pdv{p}{x}{z}}
+\end{equation*}$$
+$$\begin{equation*}
+\therefore \quad \qty[ \pdv{t} + U \pdv{x} ] \eta = -U' \pdv{v}{z}
+\end{equation*}$$
+
+
+以上をまとめると、
+
+{: .new-title}
+> 微小擾乱についての、線形化された発展方程式 (非圧縮・非粘性・1次元速度分布)
+> 
+> 基本流の速度分布が $U_1 = U(y), U_2=U_3=0$ (添え字 1, 2, 3はそれぞれ $x, y, z$方向を表す) とかけるとき、 (\ref{eq:a1}) -- (\ref{eq:a4})は、次のように整理できる
+> $$ \begin{align}
+& \qty[ \qty(\pdv{t} + U \pdv{x}) \laplacian - U'' \pdv{x} ] v = 0 \label{eq:b1} 
+& \qty[ \pdv{t} + U \pdv{x} ] \eta = -U' \pdv{v}{z} \label{eq:b2}
+& \laplacian{p} = -2U' \pdv{v}{x} \label{eq:b3}
+\end{align}$$
 
 
 ## 参考文献
