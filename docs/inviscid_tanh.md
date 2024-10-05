@@ -58,7 +58,7 @@ $$\begin{align*}
 
 
 ここで、基本流 $U_i$ ($i=1,2,3$ はそれぞれ $x,y,z$ 成分) として、 $U_1 = U(y), U_2=U_3=0$ を考えます。 
-$x$方向に流れがあり、$y$方向にのみ分布があるというもので、境界層や混合層を単純化したものになっています。〔※TODO: 詳しい説明の追加〕
+$x$方向に流れがあり、$y$方向にのみ分布があるというもので、境界層や混合層を単純化したものになっています。〔※TODO: もっと具体的な説明の追加〕
 
 $u_1, u_2, u_3$ をそれぞれ $u, v, w$ として、上述の式を書き下すと、
 
@@ -69,7 +69,7 @@ $$\begin{align}
 & \pdv{u}{x} + \pdv{v}{y} + \pdv{w}{z} = 0 \label{eq:a4}
 \end{align}$$
 
-以下 $\dv{U}{y}$ を $U'$ と書く。
+以下 $\dv{U}{y}$ を $U'$ と書くことにします。
 $\pdv{x}(\ref{eq:a1}) + \pdv{y}(\ref{eq:a2}) + \pdv{z}(\ref{eq:a3})$ とすると、
 
 $$\begin{equation*}
@@ -85,11 +85,11 @@ $$\begin{equation}
 
 また、 $\nabla^2 (\ref{eq:a2})$ とすると、
 
-$$\begin{equation}
+$$\begin{gather}
 \pdv{t}\laplacian{v} = -\pdv[2]{x} \qty(U\pdv{v}{x}) - \pdv[2]{y} \qty(U\pdv{v}{x}) - \pdv[2]{z} \qty(U\pdv{v}{x}) - \pdv{y} \laplacian{p} \nonumber \\
 \therefore \quad \pdv{t} \laplacian{v} = - U \pdv{x} \laplacian{v} - U'' \pdv{v}{x} - \cancel{2U' \pdv{v}{x}{y}}  + 2U'' \pdv{v}{x} + \cancel{2U' \pdv{v}{x}{y}} \nonumber \\
 \therefore \quad \qty[ \qty(\pdv{t} + U \pdv{x}) \laplacian - U'' \pdv{x} ] v = 0 \label{eq:a6} 
-\end{equation}$$
+\end{gather}$$
 
 ただし、
 
@@ -103,7 +103,7 @@ $$\begin{equation*}
 -\pdv{y} \laplacian{p} = -\pdv{y} \qty(-2U' \pdv{v}{x}) = 2U'' \pdv{v}{x} + 2U' \pdv{v}{x}{y}
 \end{equation*}$$
 
-となることを用いた。
+となることを使っています。
 
 
 
