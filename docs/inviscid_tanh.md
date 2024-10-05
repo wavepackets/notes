@@ -12,10 +12,14 @@ Hydrodynamic stabilityの基本的な問題の一つですが、ちょっとや�
 ## 問題設定
 
 {: .new-title}
-> 基礎式：Navier-Stokes方程式
+> 基礎式：Navier-Stokes方程式 (非圧縮)
 > 
 > $$ \begin{align}
+& \pdv{u_i}{t} = -u_j \pdv{u_i}{x_j} - \pdv{p}{x_i} + \frac{1}{Re} \nabla^2 u_i \\
+& \pdv{u_i}{x_i} = 0
 \end{align}$$
+
+
 
 
 
