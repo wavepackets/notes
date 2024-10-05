@@ -9,15 +9,17 @@ nav_order: 10
 
 Hydrodynamic stabilityの基本的な問題の一つですが、ちょっとややこしいのでまとめてみます。
 
-次に示す(非圧縮性の)オイラー方程式が出発点です:
+## 問題設定
 
 {: .new-title}
-> a
+> 基礎式：Navier-Stokes方程式
 > 
-> b
+> $$ \begin{align}
+\end{align}$$
+
 
 
 
 
 ## 参考文献
-1. Schmid, P. and Henningson, D., ``Stability and Transition in Shear FLows,'' Springer, 2001.
+1. P. Schmid and D. Henningson, "Stability and Transition in Shear FLows," Springer, 2001.
