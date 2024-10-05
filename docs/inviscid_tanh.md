@@ -69,15 +69,16 @@ $$\begin{align}
 & \pdv{u}{x} + \pdv{v}{y} + \pdv{w}{z} = 0 \label{eq:a4}
 \end{align}$$
 
-以下 $\dv{U}{y}$ を $U^\prime$ とかく。
+以下 $\dv{U}{y}$ を $U^\prime$ と書く。
 $\pdv{x}(\ref{eq:a1}) + \pdv{y}(\ref{eq:a2}) + \pdv{z}(\ref{eq:a3})$ とすると、
 
-$$\begin{align}
-\pdv{t} \underbrace{\qty( \pdv{u}{x} + \pdv{v}{y} + \pdv{z}{z} )}_{=0 (\because \quad \mathrm{Eq.} \ \ref{eq:a4})} 
-= -U^\prime \pdv{v}{x} - U\pdv{x} \underbrace{\qty( \pdv{u}{x} + \pdv{v}{y} + \pdv{z}{z} )}_{=0} -U^\prime \pdv{v}{x}
--\qty(\pdv[2]{x} + \pdv[2]{y} + \pdv[2]{z})p \nonumber\\
-\therefore \quad \nabla^2 p = 2U^\prime \pdv{v}{x}
-\end{align}$$
+$$\begin{gather}
+\pdv{t} \underbrace{\qty( \pdv{u}{x} + \pdv{v}{y} + \pdv{z}{z} )}_{=0 (\because \ (\ref{eq:a4}))} 
+= -U^\prime \pdv{v}{x} - U\pdv{x} \underbrace{\qty( \pdv{u}{x} + \pdv{v}{y} + \pdv{z}{z} )}_{=0 (\because \ (\ref{eq:a4}))}
+-U^\prime \pdv{v}{x}
+-\underbrace{\qty(\pdv[2]{x} + \pdv[2]{y} + \pdv[2]{z})}_{\nabla^2} p \nonumber\\
+\therefore \quad \nabla^2 p = -2U^\prime \pdv{v}{x}
+\end{gather}$$
 
 
 ## 参考文献
