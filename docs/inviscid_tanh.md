@@ -130,10 +130,10 @@ $$\begin{equation*}
 {: .new-title}
 > 微小擾乱についての、線形化された発展方程式 (非圧縮・非粘性・1次元速度分布)
 > 
-> 基本流の速度分布が $U_1 = U(y), U_2=U_3=0$ (添え字 1, 2, 3はそれぞれ $x, y, z$方向を表す) とかけるとき、 (\ref{eq:a1}) -- (\ref{eq:a4})は、次のように整理できる
+> 基本流の速度分布が $U_1 = U(y), U_2=U_3=0$ (添え字 1, 2, 3はそれぞれ $x, y, z$方向を表す) であるとき、式(\ref{eq:a1}) -- (\ref{eq:a4})は、次のように整理できる。
 > $$ \begin{align}
-& \qty[ \qty(\pdv{t} + U \pdv{x}) \laplacian - U'' \pdv{x} ] v = 0 \label{eq:b1} 
-& \qty[ \pdv{t} + U \pdv{x} ] \eta = -U' \pdv{v}{z} \label{eq:b2}
+& \qty[ \qty(\pdv{t} + U \pdv{x}) \laplacian - U'' \pdv{x} ] v = 0 \label{eq:b1} \\
+& \qty[ \pdv{t} + U \pdv{x} ] \eta = -U' \pdv{v}{z} \label{eq:b2} \\
 & \laplacian{p} = -2U' \pdv{v}{x} \label{eq:b3}
 \end{align}$$
 
