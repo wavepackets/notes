@@ -72,14 +72,23 @@ $$\begin{align}
 以下 $\dv{U}{y}$ を $U^\prime$ と書く。
 $\pdv{x}(\ref{eq:a1}) + \pdv{y}(\ref{eq:a2}) + \pdv{z}(\ref{eq:a3})$ とすると、
 
-$$\begin{gather}
-\pdv{t} \underbrace{\qty( \pdv{u}{x} + \pdv{v}{y} + \pdv{z}{z} )}_{=0 (\because \ (\ref{eq:a4}))} 
+$$\begin{equation*}
+& \pdv{t} \underbrace{\qty( \pdv{u}{x} + \pdv{v}{y} + \pdv{z}{z} )}_{=0 (\because \ (\ref{eq:a4}))} 
 = -U^\prime \pdv{v}{x} - U\pdv{x} \underbrace{\qty( \pdv{u}{x} + \pdv{v}{y} + \pdv{z}{z} )}_{=0 (\because \ (\ref{eq:a4}))}
 -U^\prime \pdv{v}{x}
--\underbrace{\qty(\pdv[2]{x} + \pdv[2]{y} + \pdv[2]{z})}_{\nabla^2} p \nonumber\\
-\therefore \quad \nabla^2 p = -2U^\prime \pdv{v}{x}
-\end{gather}$$
+-\underbrace{\qty(\pdv[2]{x} + \pdv[2]{y} + \pdv[2]{z})}_{\nabla^2} p
+\end{equation*}$$
+$$\begin{equation}
+\therefore \quad & \nabla^2 p = -2U^\prime \pdv{v}{x} \label{eq:a5}
+\end{equation}$$
 
+また、 $\nabla^2 (\ref{eq:a2})$ とすると、
+
+$$\begin{align*}
+\pdv{t}\nabla^2 v = -\pdv[2]{x} \qty(U\pdv{v}{x}) - \pdv[2]{y} \qty(U\pdv{v}{x}) - \pdv[2]{z} \qty(U\pdv{v}{x}) - \pdv{y} \nabla^2 p
+\end{align*}$$
+$\pdv[2]{y} \qty(U\pdv{v}{x}) = \pdv{y} \qty(U' \pdv{v}{x} + U \pdv{v}{x}{y}) = U'' \pdv{v}{x} + 2U \pdv{v}{x}{y} + U \pdv{x} \pdv[2]{v}{y}$ 、
+および、式(\ref{eq:a5})より $\pdv{y} \nabla^2 p = \pdv{y} \qty(-2U' \pdv{v}{x}) = -2U'' \pdv{v}{x} - 2U' \pdv{v}{x}{y}$ より、
 
 ## 参考文献
 1. P. Schmid and D. Henningson, "Stability and Transition in Shear FLows," Springer, 2001.
