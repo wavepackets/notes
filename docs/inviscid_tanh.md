@@ -64,12 +64,13 @@ $x$方向に流れがあり、$y$方向にのみ分布があるというもの�
 
 $u_1, u_2, u_3$ をそれぞれ $u, v, w$ として、上述の式を書き下すと、
 
-$$\begin{align*}
-& \pdv{u}{t} = -v\pdv{U}{y} &- U\pdv{u}{x} - \pdv{p}{x} \\
-& \pdv{v}{t} =  &-U\pdv{v}{x} - \pdv{p}{y} \\
-& \pdv{w}{t} =  &-U\pdv{w}{x} - \pdv{p}{z}
-\end{align*}$$
+$$\begin{align}
+& \pdv{u}{t} = -v\dv{U}{y} - U\pdv{u}{x} - \pdv{p}{x} \label{eq:a1}\\
+& \pdv{v}{t} = \phantom{-v\pdv{U}{y}} -U\pdv{v}{x} - \pdv{p}{y} \label{eq:a2}\\
+& \pdv{w}{t} = \phantom{-v\pdv{U}{y}} -U\pdv{w}{x} - \pdv{p}{z} \label{eq:a3}
+\end{align}$$
 
+$\pdv{x}(\ref{eq:a1}) + \pdv{y}(\ref{eq:a2}) + \pdv{z}(\ref{eq:a3})$
 
 
 
