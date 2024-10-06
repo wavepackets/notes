@@ -8,7 +8,7 @@ parent: 非粘性・１次元速度分布の線形安定性解析
 # Rayleigh方程式の導出
 
 「**基本流 (base flow)**が与えられたとき、ある波長の擾乱を加えたら増幅（または減衰）されるか？」という、流体力学で定番の問題設定があります。
-この問題を考えるのが安定性解析であり、一部の問題は**Rayleigh方程式**とよばれる常微分方程式の固有値問題を解くことに帰着します。
+これを調べる方法の一つが安定性解析であり、その一部は**Rayleigh方程式**とよばれる常微分方程式の固有値問題を解くことに帰着します。
 以下ではまず、Navier-Stokes方程式からRayleigh方程式への導出をまとめてみます。
 
 ## 出発点
@@ -23,7 +23,7 @@ parent: 非粘性・１次元速度分布の線形安定性解析
 > ただし、 $u_i$ は速度 ($i=1,2,3$ をそれぞれ $x, y, z$軸方向とする)、 $p$ は圧力。
 > 各値は代表速度 $U^\ast$ と代表長 $L^\ast$ で無次元化されているものとし、 $Re=U^\ast L^\ast / \nu^\ast$ はレイノルズ数 ($\nu^\ast$ は動粘性係数)。
 
-いま、速度・圧力をそれぞれ　$u_i = U_i + u'_i, p = P + p'$ のように、「基本流成分＋擾乱成分」の形で書けるとします。
+いま、速度・圧力がそれぞれ $u_i = U_i + u'_i, p = P + p'$ のように、「基本流成分＋擾乱成分」の形で書けるとします。
 これをNavier-Stokes方程式に代入すれば、
 
 $$\begin{gather*}
@@ -51,7 +51,7 @@ $$\begin{gather*}
 
 ## Rayleigh方程式導出のための仮定
 
-Rayleigh方程式を導出では、以下の場合を考えます:
+Rayleigh方程式の導出では、以下の場合を考えます:
 1. 非粘性 ($Re \to \infty$)
 2. 無限小擾乱 (擾乱成分の2次以上の項を無視して線形化できる)
 3. 平行流 (基本流の速度場は $U_1 = U(y), U_2=U_3 = 0$ の形をとる。ただし$i=1,2,3$ はそれぞれ $x, y, z$方向を表す)
@@ -83,7 +83,7 @@ $$\begin{gather*}
 ## 平行流
 
 基本流の速度場が、 $U_1 = U(y), U_2 = U_3 = 0$ と書けるとします。
-流れが $x$ 軸に平行であり、 $y$ 方向にのみ分布を持つ場合であり、境界層や混合層を単純化したものになっています〔TODO: 具体例 → mixing layer, jet, wake, Couette flow, Poiseuille flow, wall boundary layer, etc.〕
+流れが $x$ 軸に平行で、 $y$ 方向にのみ速度分布を持つという場合で、境界層や混合層を単純化したものになっています〔TODO: 具体例→mixing layer, jet, wake, Couette flow, Poiseuille flow, wall boundary layer, etc.〕
 
 $u_1, u_2, u_3$ をそれぞれ $u, v, w$ として、前式を書き下すと、
 
@@ -133,6 +133,7 @@ $$\begin{equation*}
 \end{equation*}$$
 
 となります。
+ただし $$\dv*[2]{U}{y}$$ を $U''$ と書いています。
 また、右辺の第4項は、ステップ1より
 
 $$\begin{equation*}
@@ -146,8 +147,7 @@ $$\begin{gather*}
 \therefore \quad \qty[ \qty(\pdv{t} + U \pdv{x}) \laplacian - U'' \pdv{x} ] v = 0
 \end{gather*}$$
 
-となります。
-ただし $$\dv*[2]{U}{y}$$ を $U''$ と書いています。
+が得られます。
 
 
 ### ステップ3: $y$方向渦度 $\eta$ の式
@@ -209,7 +209,9 @@ $$ \qty(\pdv[2]{x} + \pdv[2]{z}) w = - \pdv{\eta}{x} - \pdv{v}{y}{z}$$
 > (定義) 波状擾乱
 > 
 > $$\begin{equation} v(x, y, z, t) = \tilde{v}(y) e^{i \qty(\alpha x + \beta z - \alpha c t)} \label{eq:wave1} \end{equation}$$
-> $\alpha \in \mathbb{R}$ は $x$ 方向波数、 $\beta \in \mathbb{R}$ は $z$ 方向波数、 $c = c_r + i c_i \in \mathbb{C}$ は(複素) 位相速度 ($c_r, c_i \in \mathbb{R}$)
+> $\alpha \in \mathbb{R}$ は $x$ 方向波数、 $\beta \in \mathbb{R}$ は $z$ 方向波数、 $c = c_r + i c_i \in \mathbb{C}$ は(複素)位相速度 ($c_r, c_i \in \mathbb{R}$)
+
+ここで $y$ 方向の(複素)振幅分布
 
 $$\tilde{v}(y)  = \abs{\tilde{v} (y) } e^{i\phi (y)}$$
 
@@ -226,13 +228,14 @@ $$\begin{align*}
 \end{align*}$$
 
 と書けます。
-これは、波数ベクトル $$\vb*{k}$$ に直交した波面を持っています(※ つまり、$t$ を固定すると、 $$\vb*{k}$$ に垂直な方向には $$\vb*{k} \cdot \vb*{x}$$ は変わらず $\cos$ の中身(位相) が一定となる)〔TODO: 具体例の図示〕
+これは、波数ベクトル $$\vb*{k}$$ に直交した波面を持っています(※ つまり、$t$ を固定すると、 $$\vb*{k}$$ に垂直な方向には $$\vb*{k} \cdot \vb*{x}$$ は変わらず $\cos$ の中身(位相) が一定となります)〔TODO: 具体例の図示〕
 
 ここで重要なのが $e^{\alpha c_i t}$ の部分で、
 - $\alpha c_i > 0$ ならば、時間とともに指数的に増幅
 - $\alpha c_i < 0$ ならば、時間とともに指数的に減衰
+
 をすることが分かります。
-このとき、最初に述べた 「**基本流 (base flow)**が与えられたとき、ある波長の擾乱を加えたら増幅（または減衰）されるか？」 という問題は、「ある波数 $\alpha, \beta$ を与えたときに、式(\ref{eq:b1})を満たす $c$ の虚部 $c_i$ の符号は？」 という問題に帰着します。
+このとき、最初に述べた 「基本流 (base flow)が与えられたとき、ある波長の擾乱を加えたら増幅（または減衰）されるか？」 という問題は、**「ある波数 $\alpha, \beta$ を与えたときに、式(\ref{eq:b1})を満たす $c$ の虚部 $c_i$ の符号は？」**という問題に帰着します。
 
 
 
@@ -249,6 +252,7 @@ $$\qty[ \qty(\pdv{t} + U \pdv{x}) \laplacian - U'' \pdv{x} ] v = 0$$
 
 $$\begin{align*}
 \laplacian{v}
+& = \qty( \pdv[2]{x} + \pdv[2]{y} + \pdv[2]{z} ) v \\
 & = \pdv{x} \qty( i\alpha \tilde{v} e^{i(\alpha x + \beta z - \alpha c t)}  ) + 
 \pdv{y} \qty( \dv{\tilde{v}}{y} e^{i(\alpha x + \beta z - \alpha c t)} ) +
 \pdv{z} \qty( i\beta \tilde{v} e^{i(\alpha x + \beta z - \alpha c t)}  ) \\
@@ -267,13 +271,12 @@ $$\begin{equation*}
 となります。
 したがって、
 
-
 $$\begin{align*}
-\qty[ \qty(\pdv{t} + U \pdv{x}) \laplacian - U'' \pdv{x} ] v \\
-&= \qty(\pdv{t} + U \pdv{x}) \qty[ \qty(\mathcal{D}^2 - k^2) \tilde{v} ] e^{i(\alpha x + \beta z - \alpha c t)} -
+& \qty[ \qty(\pdv{t} + U \pdv{x}) \laplacian - U'' \pdv{x} ] v \\
+& = \qty(\pdv{t} + U \pdv{x}) \qty[ \qty(\mathcal{D}^2 - k^2) \tilde{v} ] e^{i(\alpha x + \beta z - \alpha c t)} -
    i\alpha U'' \tilde{v} e^{i(\alpha x + \beta z - \alpha c t)} \\
-&= \qty{ \qty(-i\alpha c + i\alpha U) \qty(\mathcal{D}^2 - k^2) \tilde{v}  -i \alpha U'' \tilde{v}  } e^{i(\alpha x + \beta z - \alpha c t)}  \\
-&= \qty{ \qty(U-c) \qty(\mathcal{D}^2 - k^2) \tilde{v} - U'' \tilde{v} } i\alpha e^{i(\alpha x + \beta z - \alpha c t)}
+& = \qty{ \qty(-i\alpha c + i\alpha U) \qty(\mathcal{D}^2 - k^2) \tilde{v}  -i \alpha U'' \tilde{v}  } e^{i(\alpha x + \beta z - \alpha c t)}  \\
+& = \qty{ \qty(U-c) \qty(\mathcal{D}^2 - k^2) \tilde{v} - U'' \tilde{v} } i\alpha e^{i(\alpha x + \beta z - \alpha c t)}
 \end{align*}$$
 
 これが $\alpha$ によらず $0$ となるのは、
