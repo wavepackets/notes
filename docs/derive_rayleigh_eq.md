@@ -159,7 +159,7 @@ $$\begin{equation*}
 
 ここで、次のような波状擾乱を考えます。
 
-{: .highlight-title}
+{: .new-title}
 > (定義) 波状擾乱
 > 
 > $$\begin{equation} v(x, y, z, t) = \tilde{v}(y) e^{i \qty(\alpha x + \beta z - \alpha c t)} \label{eq:wave1} \end{equation}$$
@@ -182,9 +182,10 @@ $$\begin{align*}
 <!-- u_perp, u_parallelは...また必要になったら追加すればいいよね -->
 
 
-この波状擾乱(式\ref{eq:wave1}))を、式(\ref{eq:b1})に代入します。
+この波状擾乱(式(\ref{eq:wave1}))を、式(\ref{eq:b1})に代入します。
+まず、
 
-$$\begin{aligned*}
+$$\begin{align*}
 \laplacian{v}
 & = \pdv{x} \qty( i\alpha \tilde{v} e^{i(\alpha x + \beta z - \alpha c t)}  ) + 
 \pdv{y} \qty( \dv{\tilde{v}}{y} e^{i(\alpha x + \beta z - \alpha c t)} ) +
@@ -192,13 +193,46 @@ $$\begin{aligned*}
 & = -\alpha^2 \tilde{v} e^{i(\alpha x + \beta z - \alpha c t)} +
 \dv[2]{\tilde{v}}{y} e^{i(\alpha x + \beta z - \alpha c t)} -
 \beta^2 \tilde{v} e^{i(\alpha x + \beta z - \alpha c t)}
-\end{aligned*}$$
+\end{align*}$$
 
 $\dv{y} = \mathcal{D}$ と書くこととし、 $\alpha^2 + \beta^2 = k^2$ とすると、
 
 $$\begin{equation*}
 \laplacian{v} = \qty[ \qty(\mathcal{D}^2 - k^2) \tilde{v} ] e^{i(\alpha x + \beta z - \alpha c t)}
 \end{equation*}$$
+
+これを式(\ref{eq:b1})に代入すると、
+
+$$\begin{align*}
+0 &= \qty[ \qty(\pdv{t} + U \pdv{x}) \laplacian - U'' \pdv{x} ] v
+&= \qty(\pdv{t} + U \pdv{x}) \qty[ \qty(\mathcal{D}^2 - k^2) \tilde{v} ] e^{i(\alpha x + \beta z - \alpha c t)} -
+   i\alpha U'' \tilde{v} e^{i(\alpha x + \beta z - \alpha c t)} \\
+&= \qty{ \qty(-i\alpha c + i\alpha U) \qty(\mathcal{D}^2 - k^2) \tilde{v}  -i \alpha U'' \tilde{v}  } e^{i(\alpha x + \beta z - \alpha c t)}  \\
+&= \qty{ \qty(U-c) \qty(\mathcal{D}^2 - k^2) \tilde{v} - U'' \tilde{v} } i\alpha e^{i(\alpha x + \beta z - \alpha c t)}
+\end{align*}$$
+
+これが $\alpha$ によらず成り立つには、
+
+$$\begin{equation*}
+\qty(U-c) \qty(\mathcal{D}^2 - k^2) \tilde{v} - U'' \tilde{v} = 0
+\end{equation*}$$
+
+これがRayleigh方程式とよばれる式です。
+以上をまとめると、
+
+
+{: .important-title}
+> Rayleigh方程式
+> 
+> 線形化された微小擾乱の発展方程式 (非圧縮・非粘性・基本流は１次元速度分布; 式(\ref{eq:b1}))
+> $$\begin{equation*} \qty[ \qty(\pdv{t} + U \pdv{x}) \laplacian - U'' \pdv{x} ] v = 0 \end{equation*}$$
+> の解として、式(\ref{eq:wave1})の波状擾乱
+> $$\begin{equation*} v(x, y, z, t) = \tilde{v}(y) e^{i \qty(\alpha x + \beta z - \alpha c t)} \end{equation*}$$
+> を代入すれば、
+> $$\begin{equation} \qty(U-c) \qty(\mathcal{D}^2 - k^2) \tilde{v} - U'' \tilde{v} = 0 \end{equation}$$
+> となる。ただし $$\mathcal{D} = \dv*{y}, U'' = \dv*[2]{U}{y}$$ である。
+> この式は、 **Rayleigh方程式**とよばれる。
+
 
 
 
