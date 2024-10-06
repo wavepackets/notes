@@ -306,7 +306,7 @@ $$\begin{equation*}
 >
 > $$\begin{equation} \qty(U-c) \qty(\mathcal{D}^2 - k^2) \tilde{v} - U'' \tilde{v} = 0 \end{equation}$$
 >
-> ただし $$\mathcal{D} = \dv*{y}, U'' = \dv*[2]{U}{y}$$ である。
+> ただし $$\mathcal{D} = \dv*{y}, k^2 = \alpha^2 + \beta^2, U'' = \dv*[2]{U}{y}$$ である。
 > この式は、 **Rayleigh方程式**とよばれる。
 
 
@@ -314,4 +314,4 @@ $$\begin{equation*}
 
 
 ## 参考文献
-1. P. Schmid and D. Henningson, "Stability and Transition in Shear FLows," Springer, 2001.
+1. P. Schmid and D. Henningson, "Stability and Transition in Shear Flows," Springer, 2001.
