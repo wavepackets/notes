@@ -152,7 +152,7 @@ $$\begin{equation*}
 & \laplacian{p} = -2U' \pdv{v}{x} \label{eq:b3}
 \end{gather}$$
 
-式(\ref{eq:b1})を満たすような解 $v$ が求まれば、式(\ref{eq:b2}), (\ref{eq:b3})からそれぞれ $\eta, p$ も求まります。
+式(\ref{eq:b1})を満たすような解 $v$ が求まれば、式(\ref{eq:b2}), (\ref{eq:b3})からそれぞれ $\eta, p$ も決まります。
 
 
 
@@ -162,22 +162,44 @@ $$\begin{equation*}
 {: .highlight-title}
 > (定義) 波状擾乱
 > 
-> $$\begin{equation} v(x, y, z, t) = \tilde{v}(y) e^{i \qty(\alpha x + \beta z - \alpha c t)} \end{equation}$$
+> $$\begin{equation} v(x, y, z, t) = \tilde{v}(y) e^{i \qty(\alpha x + \beta z - \alpha c t)} \label{eq:wave1} \end{equation}$$
 > ただし $\alpha, \beta \in \mathbb{R}$ は $x, z$ 方向波数、 $c = c_r + i c_i \in \mathbb{C}$ は(複素) 位相速度 ($c_r, c_i \in \mathbb{R}$)。
 
 $x, z$ 方向には基本流は一様なので正弦波とし、$y$ 方向には速度分布 $U(y)$ があるので一般の(複素)関数 $\tilde{v}(y)$ を考えています。
 $\tilde{v}(y)  = \abs{\tilde{v} (y) } e^{i\phi (y)}$、および 波数ベクトル $$\vb*{k} = \mqty(\alpha \\ \beta)$$、 $$\vb*{x} = \mqty(x \\ z)$$ とすると、(実際の流れ場として現れる) 実部は、
 
 $$\begin{align*}
-& \mathrm{Real}\qty\{ \abs{\tilde{v}} e^{i\phi(y)} e^{i\qty[ \alpha x + \beta z - \alpha (c_r + i c_i) t]} \} \\
+& \mathrm{Real}\qty{ \abs{\tilde{v}} e^{i\phi(y)} e^{i\qty[ \alpha x + \beta z - \alpha (c_r + i c_i) t]} } \\
 & = \abs{\tilde{v} (y) } e^{\alpha c_i t} \cos( \vb*{k} \cdot \vb*{x} - \alpha c_r t + \phi(y) )
 \end{align*}$$
 
 となります。これは、次の特徴を持ちます：
-- ベクトル $$\vb*{k}$$ に直交した波面を持つ。つまりある瞬間 ($t$ を固定) に $$\vb*{k}$$ に直交する方向へ $$\vb*{x}$$ を変化させても、 $$\vb*{k} \cdot \vb*{x}$$ は変わらず $\cos$ の中身（位相）は一定。
-- $x$ 方向への位相速度が $c_r$。
-- $\alpha c_i > 0$ なら擾乱は指数的に成長。 $\alpha c_i < 0$ なら擾乱は指数的に減衰。
+- **$\alpha c_i > 0$ なら擾乱は指数的に成長。 $\alpha c_i < 0$ なら擾乱は指数的に減衰。**
 - $y$ 方向の振幅分布は $\abs{\tilde{v}(y)}$ により、位相分布は $\phi(y)$ で決まる。
+- 波の伝播の$x$ 方向への位相速度が $c_r$。
+- ベクトル $$\vb*{k}$$ に直交した波面を持つ。つまりある瞬間 ($t$ を固定) に $$\vb*{k}$$ に直交する方向へ $$\vb*{x}$$ を変化させても、 $$\vb*{k} \cdot \vb*{x}$$ は変わらず $\cos$ の中身（位相）は一定。
+〔TODO: 具体例のプロット〕
+<!-- u_perp, u_parallelは...また必要になったら追加すればいいよね -->
+
+
+この波状擾乱(式\ref{eq:wave1}))を、式(\ref{eq:b1})に代入します。
+
+$$\begin{aligned*}
+\laplacian{v}
+& = \pdv{x} \qty( i\alpha \tilde{v} e^{i(\alpha x + \beta z - \alpha c t)}  ) + 
+\pdv{y} \qty( \dv{\tilde{v}}{y} e^{i(\alpha x + \beta z - \alpha c t)} ) +
+\pdv{z} \qty( i\beta \tilde{v} e^{i(\alpha x + \beta z - \alpha c t)}  ) \\
+& = -\alpha^2 \tilde{v} e^{i(\alpha x + \beta z - \alpha c t)} +
+\dv[2]{\tilde{v}}{y} e^{i(\alpha x + \beta z - \alpha c t)} -
+\beta^2 \tilde{v} e^{i(\alpha x + \beta z - \alpha c t)}
+\end{aligned*}$$
+
+$\dv{y} = \mathcal{D}$ と書くこととし、 $\alpha^2 + \beta^2 = k^2$ とすると、
+
+$$\begin{equation*}
+\laplacian{v} = \qty[ \qty(\mathcal{D}^2 - k^2) \tilde{v} ] e^{i(\alpha x + \beta z - \alpha c t)}
+\end{equation*}$$
+
 
 
 # 参考文献
