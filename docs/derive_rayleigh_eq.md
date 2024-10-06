@@ -236,10 +236,16 @@ $$\begin{align*}
 
 
 
-## Rayleigh方程式
+この波状擾乱(式(\ref{eq:wave1}))
 
-上述の波状擾乱(式(\ref{eq:wave1}))を、式(\ref{eq:b1})に代入します。
-まず、
+$$v(x, y, z, t) = \tilde{v}(y) e^{i \qty(\alpha x + \beta z - \alpha c t)}$$
+
+を、式(\ref{eq:b1})
+
+$$\qty[ \qty(\pdv{t} + U \pdv{x}) \laplacian - U'' \pdv{x} ] v = 0$$
+
+に代入します。
+まず $\laplacian{v}$ の部分は、
 
 $$\begin{align*}
 \laplacian{v}
@@ -251,29 +257,34 @@ $$\begin{align*}
 \beta^2 \tilde{v} e^{i(\alpha x + \beta z - \alpha c t)}
 \end{align*}$$
 
-$\dv{y} = \mathcal{D}$ と書くこととし、 $\alpha^2 + \beta^2 = k^2$ とすると、
+となります。
+ここで、$\dv{y} = \mathcal{D}$ と書くこととし、 $\alpha^2 + \beta^2 = k^2$ とすれば、
 
 $$\begin{equation*}
 \laplacian{v} = \qty[ \qty(\mathcal{D}^2 - k^2) \tilde{v} ] e^{i(\alpha x + \beta z - \alpha c t)}
 \end{equation*}$$
 
-これを式(\ref{eq:b1})に代入すると、
+となります。
+したがって、
+
 
 $$\begin{align*}
-0 &= \qty[ \qty(\pdv{t} + U \pdv{x}) \laplacian - U'' \pdv{x} ] v \\
+\qty[ \qty(\pdv{t} + U \pdv{x}) \laplacian - U'' \pdv{x} ] v \\
 &= \qty(\pdv{t} + U \pdv{x}) \qty[ \qty(\mathcal{D}^2 - k^2) \tilde{v} ] e^{i(\alpha x + \beta z - \alpha c t)} -
    i\alpha U'' \tilde{v} e^{i(\alpha x + \beta z - \alpha c t)} \\
 &= \qty{ \qty(-i\alpha c + i\alpha U) \qty(\mathcal{D}^2 - k^2) \tilde{v}  -i \alpha U'' \tilde{v}  } e^{i(\alpha x + \beta z - \alpha c t)}  \\
 &= \qty{ \qty(U-c) \qty(\mathcal{D}^2 - k^2) \tilde{v} - U'' \tilde{v} } i\alpha e^{i(\alpha x + \beta z - \alpha c t)}
 \end{align*}$$
 
-これが $\alpha$ によらず成り立つには、
+これが $\alpha$ によらず $0$ となるのは、
 
 $$\begin{equation*}
 \qty(U-c) \qty(\mathcal{D}^2 - k^2) \tilde{v} - U'' \tilde{v} = 0
 \end{equation*}$$
 
-これがRayleigh方程式とよばれる式です。
+のときです。これが**Rayleigh方程式**です。
+
+
 以上をまとめると、
 
 
