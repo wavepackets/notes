@@ -7,7 +7,7 @@ parent: 非粘性・１次元速度分布の線形安定性解析
 
 # Rayleigh方程式の導出
 
-{: .new-title}
+{: .important-title}
 > 基礎式：Navier-Stokes方程式 (非圧縮)
 > 
 > $$ \begin{gather}
@@ -50,7 +50,7 @@ $$\begin{align*}
 
 このとき、
 
-{: .new-title}
+{: .important-title}
 > 微小擾乱についての、線形化された発展方程式 (非圧縮・非粘性)
 > 
 > $$ \begin{gather}
@@ -97,7 +97,7 @@ $$\begin{equation*}
 
 **(ステップ2)**
 
-$\nabla^2 (\ref{eq:a2})$ とすると、
+$\laplacian{ (\ref{eq:a2}) }$ とすると、
 
 $$\begin{gather*}
 \pdv{t}\laplacian{v} = -\pdv[2]{x} \qty(U\pdv{v}{x}) - \pdv[2]{y} \qty(U\pdv{v}{x}) - \pdv[2]{z} \qty(U\pdv{v}{x}) - \pdv{y} \laplacian{p} \\
@@ -142,7 +142,7 @@ $$\begin{equation*}
 
 以上をまとめると、
 
-{: .new-title}
+{: .important-title}
 > 微小擾乱についての、線形化された発展方程式 (非圧縮・非粘性・1次元速度分布)
 > 
 > 基本流の速度分布が $U_1 = U(y), U_2=U_3=0$ (添え字 1, 2, 3はそれぞれ $x, y, z$方向を表す) であるとき、式(\ref{eq:a1}) -- (\ref{eq:a4})は、次のように整理できる。
@@ -204,7 +204,7 @@ $$\begin{equation*}
 これを式(\ref{eq:b1})に代入すると、
 
 $$\begin{align*}
-0 &= \qty[ \qty(\pdv{t} + U \pdv{x}) \laplacian - U'' \pdv{x} ] v
+0 &= \qty[ \qty(\pdv{t} + U \pdv{x}) \laplacian - U'' \pdv{x} ] v \\
 &= \qty(\pdv{t} + U \pdv{x}) \qty[ \qty(\mathcal{D}^2 - k^2) \tilde{v} ] e^{i(\alpha x + \beta z - \alpha c t)} -
    i\alpha U'' \tilde{v} e^{i(\alpha x + \beta z - \alpha c t)} \\
 &= \qty{ \qty(-i\alpha c + i\alpha U) \qty(\mathcal{D}^2 - k^2) \tilde{v}  -i \alpha U'' \tilde{v}  } e^{i(\alpha x + \beta z - \alpha c t)}  \\
@@ -225,11 +225,17 @@ $$\begin{equation*}
 > Rayleigh方程式
 > 
 > 線形化された微小擾乱の発展方程式 (非圧縮・非粘性・基本流は１次元速度分布; 式(\ref{eq:b1}))
+>
 > $$\begin{equation*} \qty[ \qty(\pdv{t} + U \pdv{x}) \laplacian - U'' \pdv{x} ] v = 0 \end{equation*}$$
+>
 > の解として、式(\ref{eq:wave1})の波状擾乱
+>
 > $$\begin{equation*} v(x, y, z, t) = \tilde{v}(y) e^{i \qty(\alpha x + \beta z - \alpha c t)} \end{equation*}$$
+>
 > を代入すれば、
+>
 > $$\begin{equation} \qty(U-c) \qty(\mathcal{D}^2 - k^2) \tilde{v} - U'' \tilde{v} = 0 \end{equation}$$
+>
 > となる。ただし $$\mathcal{D} = \dv*{y}, U'' = \dv*[2]{U}{y}$$ である。
 > この式は、 **Rayleigh方程式**とよばれる。
 
