@@ -298,7 +298,7 @@ $$\begin{equation*}
 >
 > $$\begin{equation*} v(x, y, z, t) = \tilde{v}(y) e^{i \qty(\alpha x + \beta z - \alpha c t)} \end{equation*}$$
 >
-> を仮定すると、式(\ref{eq:b1})の線形化された微小擾乱の発展方程式 (非圧縮・非粘性・基本流は１次元速度分布)
+> を仮定すると、式(\ref{eq:b1})の線形化された微小擾乱の発展方程式 (非圧縮・非粘性・平行流の場合)
 >
 > $$\begin{equation*} \qty[ \qty(\pdv{t} + U \pdv{x}) \laplacian - U'' \pdv{x} ] v = 0 \end{equation*}$$
 >
