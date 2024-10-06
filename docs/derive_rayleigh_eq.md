@@ -1,15 +1,11 @@
 ---
-title: tanh型速度分布の非粘性線形安定性解析
+title: Rayleigh方程式の導出
 layout: default
 nav_order: 10
+parent: 非粘性・１次元速度分布の線形安定性解析
 ---
 
-# tanh型速度分布の非粘性線形安定性解析
-
-
-Hydrodynamic stabilityの基本的な問題の一つですが、ちょっとややこしいのでまとめてみます。
-
-## 準備
+# Rayleigh方程式の導出
 
 {: .new-title}
 > 基礎式：Navier-Stokes方程式 (非圧縮)
@@ -72,7 +68,11 @@ $$\begin{align}
 以下、3つのステップに分けてこれらの式を整理します。
 ただし、$\dv{U}{y}$ を $U'$ と書くことにします。
 
-**(ステップ1)** $\pdv{x}(\ref{eq:a1}) + \pdv{y}(\ref{eq:a2}) + \pdv{z}(\ref{eq:a3})$ とすると、
+
+
+**(ステップ1)**
+
+$\pdv{x}(\ref{eq:a1}) + \pdv{y}(\ref{eq:a2}) + \pdv{z}(\ref{eq:a3})$ とすると、
 
 $$\begin{equation*}
 \pdv{t} \underbrace{\qty( \pdv{u}{x} + \pdv{v}{y} + \pdv{z}{z} )}_{=0 \ (\because \ (\ref{eq:a4}))} 
@@ -85,7 +85,11 @@ $$\begin{equation*}
 \therefore \quad \laplacian{p} = -2U' \pdv{v}{x}
 \end{equation*}$$
 
-**(ステップ2)** $\nabla^2 (\ref{eq:a2})$ とすると、
+
+
+**(ステップ2)**
+
+$\nabla^2 (\ref{eq:a2})$ とすると、
 
 $$\begin{gather*}
 \pdv{t}\laplacian{v} = -\pdv[2]{x} \qty(U\pdv{v}{x}) - \pdv[2]{y} \qty(U\pdv{v}{x}) - \pdv[2]{z} \qty(U\pdv{v}{x}) - \pdv{y} \laplacian{p} \\
@@ -106,6 +110,9 @@ $$\begin{equation*}
 \end{equation*}$$
 
 を使っています。
+$\dv[2]{U}{y}$ を $U''$と書いています。
+
+
 
 **(ステップ3)**
 
@@ -138,7 +145,7 @@ $$\begin{equation*}
 \end{gather}$$
 
 
-TODO: モード解とRayleigh方程式、特異性、ラプラス変換に基づく積分経路の設定、数値
+TODO: モード解とRayleigh方程式、特異性、ラプラス変換に基づく積分経路の設定、数値解法
 
-## 参考文献
+# 参考文献
 1. P. Schmid and D. Henningson, "Stability and Transition in Shear FLows," Springer, 2001.
