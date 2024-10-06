@@ -163,13 +163,13 @@ $$\begin{equation*}
 > (定義) 波状擾乱
 > 
 > $$\begin{equation} v(x, y, z, t) = \tilde{v}(y) e^{i \qty(\alpha x + \beta z - \alpha c t)} \end{equation}$$
-> ただし、 $\alpha, \beta \in \mathbb{R}$ はそれぞれ $x, z$ 方向波数、 $c = c_r + i c_i \in \mathbb{C}$ は(複素) 位相速度である ($c_r, c_i \in \mathbb{R}$)。
+> ただし $\alpha, \beta \in \mathbb{R}$ は $x, z$ 方向波数、 $c = c_r + i c_i \in \mathbb{C}$ は(複素) 位相速度 ($c_r, c_i \in \mathbb{R}$)。
 
 $x, z$ 方向には基本流は一様なので正弦波とし、$y$ 方向には速度分布 $U(y)$ があるので一般の(複素)関数 $\tilde{v}(y)$ を考えています。
-$\tilde{v}(y)  = \abs{\tilde{v} (y) } e^{i\phi (y)}$、および 波数ベクトル $\vb*{k} = \mqty(\alpha \\ \beta)$、 $\vb*{x} = \mqty(x \\ z)$ とすると、(実際の流れ場として現れる) 実部は、
+$\tilde{v}(y)  = \abs{\tilde{v} (y) } e^{i\phi (y)}$、および 波数ベクトル $\vb\*{k} = \mqty(\alpha \\ \beta)$、 $\vb\*{x} = \mqty(x \\ z)$ とすると、(実際の流れ場として現れる) 実部は、
 
 $$\begin{align*}
-& \mathrm{Real}\qty\{ \abs{\tilde{v}} e^{i\phi(y)} e^{i\qty[ \alpha x + \beta z - \alpha (c_r + i c_i) t]}} \\
+& \mathrm{Real}\qty\{ \abs{\tilde{v}} e^{i\phi(y)} e^{i\qty[ \alpha x + \beta z - \alpha (c_r + i c_i) t]} \} \\
 & = \abs{\tilde{v} (y) } e^{\alpha c_i t} \cos( \vb*{k} \cdot \vb*{x} - \alpha c_r t + \phi(y) )
 \end{align*}$$
 
