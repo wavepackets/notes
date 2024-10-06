@@ -7,6 +7,12 @@ parent: 非粘性・１次元速度分布の線形安定性解析
 
 # Rayleigh方程式の導出
 
+「**基本流 (base flow)**が与えられたとき、ある波長の擾乱を加えたら増幅（または減衰）されるか？」という、流体力学で定番の問題設定があります。
+この問題を考えるのが安定性解析であり、一部の問題は**Rayleigh方程式**とよばれる常微分方程式の固有値問題を解くことに帰着します。
+以下ではまず、Navier-Stokes方程式からRayleigh方程式への導出を説明します。
+
+## 出発点
+
 {: .important-title}
 > 基礎式：Navier-Stokes方程式 (非圧縮)
 > 
@@ -17,20 +23,8 @@ parent: 非粘性・１次元速度分布の線形安定性解析
 > ただし、 $u_i$ は速度 ($i=1,2,3$ をそれぞれ $x, y, z$軸方向とする)、 $p$ は圧力。
 > 各値は代表速度 $U^\ast$ と代表長 $L^\ast$ で無次元化されているものとし、 $Re=U^\ast L^\ast / \nu^\ast$ はレイノルズ数 ($\nu^\ast$ は動粘性係数)。
 
-
-
-この基礎式を満たす基本流が存在したとします。
-つまり、基本流の速度・圧力を $(U_i, P)$ とすると、以下が成り立ちます。
-
-$$\begin{align*}
-& \pdv{U_i}{t} = - U_j \pdv{U_i}{x_j} - \pdv{P}{x_i} + \frac{1}{Re} \laplacian{U_i} \\
-& \pdv{U_i}{x_i} = 0
-\end{align*}$$
-
-〔※基本流は時間不変だとすることが多いのですが、必須ではない気がするのでひとまず時間変化を許しておきます〕
-
-この基本流に擾乱が加わって、速度・圧力が $(U_i + u'_i, P+p')$ になったとします。
-基本流成分のみの項は前述の等式より消えて、基礎式は次のようになります。
+ここで速度・圧力がそれぞれ　$u_i = U_i + u'_i, p = P + p$ のように、「基本流＋擾乱」の形で書けるとします。
+これをNavier-Stokes方程式に代入すれば、
 
 $$\begin{align*}
 & \cancel{\pdv{U_i}{t}} + \pdv{u'_i}{t} = -
@@ -39,9 +33,17 @@ $$\begin{align*}
 & \cancel{\pdv{U_i}{x_i}} + \pdv{u'_i}{x_i} = 0
 \end{align*}$$
 
-これが擾乱成分の(非線形)発展方程式です。
+となります。ただし、基本流成分 $U_i, P$ のみでもNavier-Stokes方程式は満たされて、
+
+$$\begin{align*}
+& \pdv{U_i}{t} = - U_j \pdv{U_i}{x_j} - \pdv{P}{x_i} + \frac{1}{Re} \laplacian{U_i} \\
+& \pdv{U_i}{x_i} = 0
+\end{align*}$$
+
+が成り立つので、これを差し引いてあります。
 
 
+## 非粘性の微小擾乱の発展方程式
 
 以下、擾乱成分 $(u'_i, p')$ を $(u_i, p)$ と書きなおすことにします。
 次の二つを仮定します。
@@ -60,9 +62,11 @@ $$\begin{align*}
 > ただし $U_i$ は基本流の速度、 $(u_i, p)$ は微小な擾乱速度・圧力 (2次以上の項は無視)。
 
 
+## １次元速度分布を持つ基本流での定式化
 
-ここで、基本流 $U_i$ ($i=1,2,3$ はそれぞれ $x,y,z$ 成分) として、 $U_1 = U(y), U_2=U_3=0$ を考えます。 
-$x$方向に流れがあり、$y$方向にのみ分布があるというもので、境界層や混合層を単純化したものになっています。〔※TODO: もっと具体的な説明の追加〕
+基本流 $U_i$ ($i=1,2,3$ はそれぞれ $x,y,z$ 成分) として、 $U_1 = U(y), U_2=U_3=0$ を考えます。 
+$x$方向に平行な流れがあり、その速度は $y$ 方向に分布を持つものとしています。
+これは、境界層や混合層を模擬しています。〔※TODO: もっと具体的な説明の追加〕
 
 $u_1, u_2, u_3$ をそれぞれ $u, v, w$ として、上述の式を書き下すと、
 
@@ -78,7 +82,7 @@ $$\begin{align}
 
 
 
-**(ステップ1)**
+### (ステップ1)
 
 $\pdv{x}(\ref{eq:a1}) + \pdv{y}(\ref{eq:a2}) + \pdv{z}(\ref{eq:a3})$ とすると、
 
@@ -95,7 +99,7 @@ $$\begin{equation*}
 
 
 
-**(ステップ2)**
+### (ステップ2)
 
 $\laplacian{ (\ref{eq:a2}) }$ とすると、
 
@@ -122,7 +126,7 @@ $\dv[2]{U}{y}$ を $U''$ と書いています。
 
 
 
-**(ステップ3)**
+### (ステップ3)
 
 $$\begin{equation*}
 \eta = \pdv{u}{z} - \pdv{w}{x}
@@ -155,7 +159,7 @@ $$\begin{equation*}
 式(\ref{eq:b1})を満たすような解 $v$ が求まれば、式(\ref{eq:b2}), (\ref{eq:b3})からそれぞれ $\eta, p$ も決まります。
 
 
-
+## 波状擾乱
 
 ここで、次のような波状擾乱を考えます。
 
@@ -182,7 +186,9 @@ $$\begin{align*}
 <!-- u_perp, u_parallelは...また必要になったら追加すればいいよね -->
 
 
-この波状擾乱(式(\ref{eq:wave1}))を、式(\ref{eq:b1})に代入します。
+## Rayleigh方程式
+
+上述の波状擾乱(式(\ref{eq:wave1}))を、式(\ref{eq:b1})に代入します。
 まず、
 
 $$\begin{align*}
@@ -224,23 +230,24 @@ $$\begin{equation*}
 {: .important-title}
 > Rayleigh方程式
 > 
-> 線形化された微小擾乱の発展方程式 (非圧縮・非粘性・基本流は１次元速度分布; 式(\ref{eq:b1}))
->
-> $$\begin{equation*} \qty[ \qty(\pdv{t} + U \pdv{x}) \laplacian - U'' \pdv{x} ] v = 0 \end{equation*}$$
->
-> の解として、式(\ref{eq:wave1})の波状擾乱
+> 式(\ref{eq:wave1})の波状擾乱
 >
 > $$\begin{equation*} v(x, y, z, t) = \tilde{v}(y) e^{i \qty(\alpha x + \beta z - \alpha c t)} \end{equation*}$$
 >
-> を代入すれば、
+> を仮定すると、式(\ref{eq:b1})の線形化された微小擾乱の発展方程式 (非圧縮・非粘性・基本流は１次元速度分布)
+>
+> $$\begin{equation*} \qty[ \qty(\pdv{t} + U \pdv{x}) \laplacian - U'' \pdv{x} ] v = 0 \end{equation*}$$
+>
+> から次の式が得られる：
 >
 > $$\begin{equation} \qty(U-c) \qty(\mathcal{D}^2 - k^2) \tilde{v} - U'' \tilde{v} = 0 \end{equation}$$
 >
-> となる。ただし $$\mathcal{D} = \dv*{y}, U'' = \dv*[2]{U}{y}$$ である。
+> ただし $$\mathcal{D} = \dv*{y}, U'' = \dv*[2]{U}{y}$$ である。
 > この式は、 **Rayleigh方程式**とよばれる。
 
 
 
 
-# 参考文献
+
+## 参考文献
 1. P. Schmid and D. Henningson, "Stability and Transition in Shear FLows," Springer, 2001.
