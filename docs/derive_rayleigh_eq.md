@@ -17,23 +17,31 @@ parent: 非粘性・１次元速度分布の線形安定性解析
 > ただし、 $u_i$ は速度 ($i=1,2,3$ をそれぞれ $x, y, z$軸方向とする)、 $p$ は圧力。
 > 各値は代表速度 $U^\ast$ と代表長 $L^\ast$ で無次元化されているものとし、 $Re=U^\ast L^\ast / \nu^\ast$ はレイノルズ数 ($\nu^\ast$ は動粘性係数)。
 
-この基礎式を満たす基本流が存在するとします。
+
+
+この基礎式を満たす基本流が存在したとします。
 つまり、基本流の速度・圧力を $(U_i, P)$ とすると、以下が成り立ちます。
+
 $$\begin{align*}
 & \pdv{U_i}{t} = - U_j \pdv{U_i}{x_j} - \pdv{P}{x_i} + \frac{1}{Re} \laplacian{U_i} \\
 & \pdv{U_i}{x_i} = 0
 \end{align*}$$
+
 〔※基本流は時間不変だとすることが多いのですが、必須ではない気がするのでひとまず時間変化を許しておきます〕
 
 この基本流に擾乱が加わって、速度・圧力が $(U_i + u'_i, P+p')$ になったとします。
 基本流成分のみの項は前述の等式より消えて、基礎式は次のようになります。
+
 $$\begin{align*}
 & \cancel{\pdv{U_i}{t}} + \pdv{u'_i}{t} = -
 \cancel{U_j\pdv{U_i}{x_j}} - u'_j \pdv{U_i}{x_j} - U_j \pdv{u'_i}{x_j} - u'_j \pdv{u'_i}{x_j} -
 \cancel{\pdv{P}{x_i}} - \pdv{p'}{x_i} + \cancel{\frac{1}{Re} \laplacian{U_i}} + \frac{1}{Re} \laplacian{u'_i} \\
 & \cancel{\pdv{U_i}{x_i}} + \pdv{u'_i}{x_i} = 0
 \end{align*}$$
+
 これが擾乱成分の(非線形)発展方程式です。
+
+
 
 以下、擾乱成分 $(u'_i, p')$ を $(u_i, p)$ と書きなおすことにします。
 次の二つを仮定します。
@@ -110,7 +118,7 @@ $$\begin{equation*}
 \end{equation*}$$
 
 を使っています。
-$\dv[2]{U}{y}$ を $U''$と書いています。
+$\dv[2]{U}{y}$ を $U''$ と書いています。
 
 
 
@@ -119,7 +127,7 @@ $\dv[2]{U}{y}$ を $U''$と書いています。
 $$\begin{equation*}
 \eta = \pdv{u}{z} - \pdv{w}{x}
 \end{equation*}$$
-という値を考えて、 $u$と$w$をまとめます。〔$y$方向の渦度です〕。
+という値 ($y$方向渦度) を考えて、 $u$と$w$をまとめます。
 
 $\pdv{z}(\ref{eq:a1}) - \pdv{x}(\ref{eq:a3})$ とすると、
 
@@ -144,8 +152,33 @@ $$\begin{equation*}
 & \laplacian{p} = -2U' \pdv{v}{x} \label{eq:b3}
 \end{gather}$$
 
+式(\ref{eq:b1})を満たすような解 $v$ が求まれば、式(\ref{eq:b2}), (\ref{eq:b3})からそれぞれ $\eta, p$ も求まります。
 
-TODO: モード解とRayleigh方程式、特異性、ラプラス変換に基づく積分経路の設定、数値解法
+
+
+
+ここで、次のような波状擾乱を考えます。
+
+{: .highlight-title}
+> (定義) 波状擾乱
+> 
+> $$\begin{equation} v(x, y, z, t) = \tilde{v}(y) e^{i \qty(\alpha x + \beta z - \alpha c t)} \end{equation}$$
+> ただし、 $\alpha, \beta \in \mathbb{R}$ はそれぞれ $x, z$ 方向波数、 $c = c_r + i c_i \in \mathbb{C}$ は(複素) 位相速度である ($c_r, c_i \in \mathbb{R}$)。
+
+$x, z$ 方向には基本流は一様なので正弦波とし、$y$ 方向には速度分布 $U(y)$ があるので一般の(複素)関数 $\tilde{v}(y)$ を考えています。
+$\tilde{v}(y)  = \abs{\tilde{v} (y) } e^{i\phi (y)}$、および 波数ベクトル $\vb*{k} = \mqty(\alpha \\ \beta)$、 $\vb*{x} = \mqty(x \\ z)$ とすると、(実際の流れ場として現れる) 実部は、
+
+$$\begin{align*}
+& \mathrm{Real}\qty\{ \abs{\tilde{v}} e^{i\phi(y)} e^{i\qty[ \alpha x + \beta z - \alpha (c_r + i c_i) t]}} \\
+& = \abs{\tilde{v} (y) } e^{\alpha c_i t} \cos( \vb*{k} \cdot \vb*{x} - \alpha c_r t + \phi(y) )
+\end{align*}$$
+
+となります。これは、次の特徴を持ちます：
+- ベクトル $\vb*{k}$ に直交した波面を持つ。つまりある瞬間 ($t$ を固定) に $\vb*{k}$ に直交する方向へ $\vb*{x}$ を変化させても、 $\vb*{k} \cdot \vb*{x}$ は変わらず $\cos$ の中身（位相）は一定。
+- $x$ 方向への位相速度が $c_r$。
+- $\alpha c_i > 0$ なら擾乱は指数的に成長。 $\alpha c_i < 0$ なら擾乱は指数的に減衰。
+- $y$ 方向の振幅分布は $\abs{\tilde{v}(y)}$ により、位相分布は $\phi(y)$ で決まる。
+
 
 # 参考文献
 1. P. Schmid and D. Henningson, "Stability and Transition in Shear FLows," Springer, 2001.
