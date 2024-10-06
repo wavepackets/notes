@@ -9,7 +9,7 @@ parent: 非粘性・１次元速度分布の線形安定性解析
 
 「**基本流 (base flow)**が与えられたとき、ある波長の擾乱を加えたら増幅（または減衰）されるか？」という、流体力学で定番の問題設定があります。
 この問題を考えるのが安定性解析であり、一部の問題は**Rayleigh方程式**とよばれる常微分方程式の固有値問題を解くことに帰着します。
-以下ではまず、Navier-Stokes方程式からRayleigh方程式への導出を説明します。
+以下ではまず、Navier-Stokes方程式からRayleigh方程式への導出をまとめてみます。
 
 ## 出発点
 
@@ -23,52 +23,70 @@ parent: 非粘性・１次元速度分布の線形安定性解析
 > ただし、 $u_i$ は速度 ($i=1,2,3$ をそれぞれ $x, y, z$軸方向とする)、 $p$ は圧力。
 > 各値は代表速度 $U^\ast$ と代表長 $L^\ast$ で無次元化されているものとし、 $Re=U^\ast L^\ast / \nu^\ast$ はレイノルズ数 ($\nu^\ast$ は動粘性係数)。
 
-ここで速度・圧力がそれぞれ　$u_i = U_i + u'_i, p = P + p$ のように、「基本流＋擾乱」の形で書けるとします。
+いま、速度・圧力をそれぞれ　$u_i = U_i + u'_i, p = P + p'$ のように、「基本流成分＋擾乱成分」の形で書けるとします。
 これをNavier-Stokes方程式に代入すれば、
 
-$$\begin{align*}
-& \cancel{\pdv{U_i}{t}} + \pdv{u'_i}{t} = -
-\cancel{U_j\pdv{U_i}{x_j}} - u'_j \pdv{U_i}{x_j} - U_j \pdv{u'_i}{x_j} - u'_j \pdv{u'_i}{x_j} -
-\cancel{\pdv{P}{x_i}} - \pdv{p'}{x_i} + \cancel{\frac{1}{Re} \laplacian{U_i}} + \frac{1}{Re} \laplacian{u'_i} \\
-& \cancel{\pdv{U_i}{x_i}} + \pdv{u'_i}{x_i} = 0
-\end{align*}$$
+$$\begin{gather*}
+\pdv{t} \qty(U_i + u'_i) = - \qty(U_j + u'_j) \pdv{x_j} \qty(U_i + u'_i) - \pdv{x_i} \qty(P + p') + \frac{1}{Re} \laplacian{U_i + u'_i} \\
+\pdv{x_i} \qty(U_i + u'_i) = 0
+\end{gather*}$$
 
-となります。ただし、基本流成分 $U_i, P$ のみでもNavier-Stokes方程式は満たされて、
+一方で、基本流成分 $U_i, P$ のみでもNavier-Stokes方程式
 
-$$\begin{align*}
+$$\begin{gather*}
 & \pdv{U_i}{t} = - U_j \pdv{U_i}{x_j} - \pdv{P}{x_i} + \frac{1}{Re} \laplacian{U_i} \\
 & \pdv{U_i}{x_i} = 0
-\end{align*}$$
+\end{gather*}$$
 
-が成り立つので、これを差し引いてあります。
+が成り立つので、これを差し引きます。
+また $(u'_i, p')$ を $(u_i, p)$ と書き直せば、
 
+$$\begin{gather*}
+\pdv{u_i}{t} = - u_j \pdv{U_i}{x_j} - U_j \pdv{u_i}{x_j} - u_j \pdv{u_i}{x_j} - \pdv{p}{x_i} + \frac{1}{Re} \laplacian{u_i} \\
+\pdv{u_i}{x_i} = 0
+\end{gather*}$$
 
-## 非粘性の微小擾乱の発展方程式
-
-以下、擾乱成分 $(u'_i, p')$ を $(u_i, p)$ と書きなおすことにします。
-次の二つを仮定します。
-1. 微小擾乱 (擾乱成分の2次以上の項は無視できるほど小さい)
-2. 非粘性 ($Re \to \infty$)
-
-このとき、
-
-{: .important-title}
-> 微小擾乱についての、線形化された発展方程式 (非圧縮・非粘性)
-> 
-> $$ \begin{gather}
-& \pdv{u_i}{t} = - u_j \pdv{U_i}{x_j} - U_j \pdv{u_i}{x_j} - \pdv{p}{x_i} \\
-& \pdv{u_i}{x_i} = 0
-\end{gather}$$
-> ただし $U_i$ は基本流の速度、 $(u_i, p)$ は微小な擾乱速度・圧力 (2次以上の項は無視)。
+となります。これが(非線形な)擾乱の支配方程式です。
 
 
-## １次元速度分布を持つ基本流での定式化
+## Rayleigh方程式導出のための仮定
 
-基本流 $U_i$ ($i=1,2,3$ はそれぞれ $x,y,z$ 成分) として、 $U_1 = U(y), U_2=U_3=0$ を考えます。 
-$x$方向に平行な流れがあり、その速度は $y$ 方向に分布を持つものとしています。
-これは、境界層や混合層を模擬しています。〔※TODO: もっと具体的な説明の追加〕
+Rayleigh方程式を導出では、以下の場合を考えます:
+1. 非粘性 ($Re \to \infty$)
+2. 無限小擾乱 (擾乱成分の2次以上の項を無視して線形化できる)
+3. 平行流 (基本流の速度場は $U_1 = U(y), U_2=U_3 = 0$ の形をとる。ただし$i=1,2,3$ はそれぞれ $x, y, z$方向を表す)
+4. 波状擾乱 (後述)
 
-$u_1, u_2, u_3$ をそれぞれ $u, v, w$ として、上述の式を書き下すと、
+以下、これらの条件を順に適用して、式変形を進めます。
+
+## 非粘性・無限小擾乱
+
+非粘性の場合、前式の粘性項
+
+$$\frac{1}{Re} \laplacian{u_i}$$
+
+が消えます。
+また無限小擾乱を考えると、擾乱成分の2次以上の項
+
+$$u_j \pdv{u_i}{x_j}$$
+
+も消えます。
+結局、
+
+$$\begin{gather*}
+\pdv{u_i}{t} = - u_j \pdv{U_i}{x_j} - U_j \pdv{u_i}{x_j} - \pdv{p}{x_i} \\
+\pdv{u_i}{x_i} = 0
+\end{gather*}$$
+
+となります。
+
+
+## 平行流
+
+基本流の速度場が、 $U_1 = U(y), U_2 = U_3 = 0$ と書けるとします。
+流れが $x$ 軸に平行であり、 $y$ 方向にのみ分布を持つ場合であり、境界層や混合層を単純化したものになっています〔TODO: 具体例 → mixing layer, jet, wake, Couette flow, Poiseuille flow, wall boundary layer, etc.〕
+
+$u_1, u_2, u_3$ をそれぞれ $u, v, w$ として、前式を書き下すと、
 
 $$\begin{align}
 & \pdv{u}{t} = -v\dv{U}{y} - U\pdv{u}{x} - \pdv{p}{x} \label{eq:a1} \\
@@ -77,12 +95,11 @@ $$\begin{align}
 & \pdv{u}{x} + \pdv{v}{y} + \pdv{w}{z} = 0 \label{eq:a4}
 \end{align}$$
 
-以下、3つのステップに分けてこれらの式を整理します。
-ただし、$\dv{U}{y}$ を $U'$ と書くことにします。
+となります。
+この式は、未知の量 $u, v, w, p$ が入り混じっていて、そのままでは解析しづらいので、以下の3ステップで整理します。
 
 
-
-### (ステップ1)
+### ステップ1: 圧力 $p$ の式
 
 $\pdv{x}(\ref{eq:a1}) + \pdv{y}(\ref{eq:a2}) + \pdv{z}(\ref{eq:a3})$ とすると、
 
@@ -97,11 +114,24 @@ $$\begin{equation*}
 \therefore \quad \laplacian{p} = -2U' \pdv{v}{x}
 \end{equation*}$$
 
+ただし $$\dv*{U}{y}$$ を $U'$ と書いています。
 
 
-### (ステップ2)
+### ステップ2: $y$方向速度 $v$ の式
 
-$\laplacian{ (\ref{eq:a2}) }$ とすると、
+$\laplacian{ (\ref{eq:a2}) }$ を考えます。
+
+$$\begin{equation*}
+\pdv[2]{y} \qty(U\pdv{v}{x}) = \pdv{y} \qty(U' \pdv{v}{x} + U \pdv{v}{x}{y}) = U'' \pdv{v}{x} + 2U' \pdv{v}{x}{y} + U \pdv{x} \pdv[2]{v}{y}
+\end{equation*}$$
+
+であり、またステップ1より
+
+$$\begin{equation*}
+-\pdv{y} \laplacian{p} = -\pdv{y} \qty(-2U' \pdv{v}{x}) = 2U'' \pdv{v}{x} + 2U' \pdv{v}{x}{y}
+\end{equation*}$$
+
+となるので、 $\laplacian{ (\ref{eq:a2}) }$ は
 
 $$\begin{gather*}
 \pdv{t}\laplacian{v} = -\pdv[2]{x} \qty(U\pdv{v}{x}) - \pdv[2]{y} \qty(U\pdv{v}{x}) - \pdv[2]{z} \qty(U\pdv{v}{x}) - \pdv{y} \laplacian{p} \\
@@ -109,30 +139,19 @@ $$\begin{gather*}
 \therefore \quad \qty[ \qty(\pdv{t} + U \pdv{x}) \laplacian - U'' \pdv{x} ] v = 0
 \end{gather*}$$
 
-ただし第１式から第２式への変形では、
-
-$$\begin{equation*}
-\pdv[2]{y} \qty(U\pdv{v}{x}) = \pdv{y} \qty(U' \pdv{v}{x} + U \pdv{v}{x}{y}) = U'' \pdv{v}{x} + 2U' \pdv{v}{x}{y} + U \pdv{x} \pdv[2]{v}{y}
-\end{equation*}$$
-
-と、ステップ1で得られた式による
-
-$$\begin{equation*}
--\pdv{y} \laplacian{p} = -\pdv{y} \qty(-2U' \pdv{v}{x}) = 2U'' \pdv{v}{x} + 2U' \pdv{v}{x}{y}
-\end{equation*}$$
-
-を使っています。
-$\dv[2]{U}{y}$ を $U''$ と書いています。
+となります。
+ただし $$\dv*[2]{U}{y}$$ を $U''$ と書いています。
 
 
+### ステップ3: $y$方向渦度 $\eta$ の式
 
-### (ステップ3)
+残る未知の量 $u, w$ を、 $y$方向渦度
 
 $$\begin{equation*}
 \eta = \pdv{u}{z} - \pdv{w}{x}
 \end{equation*}$$
-という値 ($y$方向渦度) を考えて、 $u$と$w$をまとめます。
 
+としてまとめます。
 $\pdv{z}(\ref{eq:a1}) - \pdv{x}(\ref{eq:a3})$ とすると、
 
 $$\begin{equation*}
@@ -147,7 +166,7 @@ $$\begin{equation*}
 以上をまとめると、
 
 {: .important-title}
-> 微小擾乱についての、線形化された発展方程式 (非圧縮・非粘性・1次元速度分布)
+> 線形化された、無限小擾乱の発展方程式 (非圧縮・非粘性・平行流)
 > 
 > 基本流の速度分布が $U_1 = U(y), U_2=U_3=0$ (添え字 1, 2, 3はそれぞれ $x, y, z$方向を表す) であるとき、式(\ref{eq:a1}) -- (\ref{eq:a4})は、次のように整理できる。
 > $$ \begin{gather}
@@ -156,7 +175,21 @@ $$\begin{equation*}
 & \laplacian{p} = -2U' \pdv{v}{x} \label{eq:b3}
 \end{gather}$$
 
-式(\ref{eq:b1})を満たすような解 $v$ が求まれば、式(\ref{eq:b2}), (\ref{eq:b3})からそれぞれ $\eta, p$ も決まります。
+式(\ref{eq:b1})は $v$ のみの式となっています。
+これを解くことで $v$ が決まれば、式(\ref{eq:b2}), (\ref{eq:b3}) から $\eta, p$ が決まるはずです。
+
+※ $$v, \eta$$ が求まれば、 $u, z$ も決まりそうです。
+実際、$$\pdv{u}{x} + \pdv{v}{y} + \pdv{z}{w} = 0$$ と $$\eta = \pdv{u}{z} - \pdv{w}{x}$$ にそれぞれ $\pdv{x}, \pdv{z}$ をかけて差をとると、
+
+$$\qty(\pdv[2]{x} + \pdv[2]{z}) u = \pdv{\eta}{z} - \pdv{v}{x}{y}$$
+
+というポアソン方程式を解けば $u$ が決まります。
+逆に $\pdv{z}, \pdv{x}$ をそれぞれかけて和をとると、
+
+$$ \qty(\pdv[2]{x} + \pdv[2]{z}) w = - \pdv{\eta}{x} - \pdv{v}{y}{z}$$
+
+となります。
+
 
 
 ## 波状擾乱
