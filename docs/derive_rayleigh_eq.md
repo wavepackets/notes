@@ -61,7 +61,7 @@ Rayleigh方程式を導出では、以下の場合を考えます:
 
 ## 非粘性・無限小擾乱
 
-非粘性の場合、前式の粘性項
+非粘性 ($Re \to \infty$ の極限) の場合、前式の粘性項
 
 $$\frac{1}{Re} \laplacian{u_i}$$
 
@@ -70,8 +70,7 @@ $$\frac{1}{Re} \laplacian{u_i}$$
 
 $$u_j \pdv{u_i}{x_j}$$
 
-も消えます。
-結局、
+も消えて、結局、
 
 $$\begin{gather*}
 \pdv{u_i}{t} = - u_j \pdv{U_i}{x_j} - U_j \pdv{u_i}{x_j} - \pdv{p}{x_i} \\
@@ -101,7 +100,7 @@ $$\begin{align}
 
 ### ステップ1: 圧力 $p$ の式
 
-$\pdv{x}(\ref{eq:a1}) + \pdv{y}(\ref{eq:a2}) + \pdv{z}(\ref{eq:a3})$ とすると、
+$\pdv{x}(\ref{eq:a1}) + \pdv{y}(\ref{eq:a2}) + \pdv{z}(\ref{eq:a3})$ を考えると、
 
 $$\begin{equation*}
 \pdv{t} \underbrace{\qty( \pdv{u}{x} + \pdv{v}{y} + \pdv{z}{z} )}_{=0 \ (\because \ (\ref{eq:a4}))} 
@@ -114,28 +113,36 @@ $$\begin{equation*}
 \therefore \quad \laplacian{p} = -2U' \pdv{v}{x}
 \end{equation*}$$
 
+が得られます。
 ただし $$\dv*{U}{y}$$ を $U'$ と書いています。
 
 
 ### ステップ2: $y$方向速度 $v$ の式
 
-$\laplacian{ (\ref{eq:a2}) }$ を考えます。
+$\laplacian{ (\ref{eq:a2}) }$ を考えると、
+
+$$\begin{equation*}
+\pdv{t}\laplacian{v} = -\pdv[2]{x} \qty(U\pdv{v}{x}) - \pdv[2]{y} \qty(U\pdv{v}{x}) - \pdv[2]{z} \qty(U\pdv{v}{x}) - \pdv{y} \laplacian{p} 
+\end{equation*}$$
+
+となります。
+ここで、右辺の第2項は、
 
 $$\begin{equation*}
 \pdv[2]{y} \qty(U\pdv{v}{x}) = \pdv{y} \qty(U' \pdv{v}{x} + U \pdv{v}{x}{y}) = U'' \pdv{v}{x} + 2U' \pdv{v}{x}{y} + U \pdv{x} \pdv[2]{v}{y}
 \end{equation*}$$
 
-であり、またステップ1より
+となります。
+また、右辺の第4項は、ステップ1より
 
 $$\begin{equation*}
 -\pdv{y} \laplacian{p} = -\pdv{y} \qty(-2U' \pdv{v}{x}) = 2U'' \pdv{v}{x} + 2U' \pdv{v}{x}{y}
 \end{equation*}$$
 
-となるので、 $\laplacian{ (\ref{eq:a2}) }$ は
+となります。したがって、
 
 $$\begin{gather*}
-\pdv{t}\laplacian{v} = -\pdv[2]{x} \qty(U\pdv{v}{x}) - \pdv[2]{y} \qty(U\pdv{v}{x}) - \pdv[2]{z} \qty(U\pdv{v}{x}) - \pdv{y} \laplacian{p} \\
-\therefore \quad \pdv{t} \laplacian{v} = - U \pdv{x} \laplacian{v} - U'' \pdv{v}{x} - \cancel{2U' \pdv{v}{x}{y}}  + 2U'' \pdv{v}{x} + \cancel{2U' \pdv{v}{x}{y}} \\
+\pdv{t} \laplacian{v} = - U \pdv{x} \laplacian{v} - U'' \pdv{v}{x} - \cancel{2U' \pdv{v}{x}{y}}  + 2U'' \pdv{v}{x} + \cancel{2U' \pdv{v}{x}{y}} \\
 \therefore \quad \qty[ \qty(\pdv{t} + U \pdv{x}) \laplacian - U'' \pdv{x} ] v = 0
 \end{gather*}$$
 
@@ -162,6 +169,8 @@ $$\begin{equation*}
 \therefore \quad \qty[ \pdv{t} + U \pdv{x} ] \eta = -U' \pdv{v}{z}
 \end{equation*}$$
 
+となります。
+
 
 以上をまとめると、
 
@@ -176,7 +185,7 @@ $$\begin{equation*}
 \end{gather}$$
 
 式(\ref{eq:b1})は $v$ のみの式となっています。
-これを解くことで $v$ が決まれば、式(\ref{eq:b2}), (\ref{eq:b3}) から $\eta, p$ が決まるはずです。
+これを解いて $v$ が決まれば、式(\ref{eq:b2}), (\ref{eq:b3}) から $\eta, p$ も決まるはずです。
 
 ※ $$v, \eta$$ が求まれば、 $u, z$ も決まりそうです。
 実際、$$\pdv{u}{x} + \pdv{v}{y} + \pdv{z}{w} = 0$$ と $$\eta = \pdv{u}{z} - \pdv{w}{x}$$ にそれぞれ $\pdv{x}, \pdv{z}$ をかけて差をとると、
@@ -194,29 +203,37 @@ $$ \qty(\pdv[2]{x} + \pdv[2]{z}) w = - \pdv{\eta}{x} - \pdv{v}{y}{z}$$
 
 ## 波状擾乱
 
-ここで、次のような波状擾乱を考えます。
+前節の式(\ref{eq:b1})の解として、次のような波状擾乱を仮定すると、Rayleigh方程式が得られます。
 
 {: .new-title}
 > (定義) 波状擾乱
 > 
 > $$\begin{equation} v(x, y, z, t) = \tilde{v}(y) e^{i \qty(\alpha x + \beta z - \alpha c t)} \label{eq:wave1} \end{equation}$$
-> ただし $\alpha, \beta \in \mathbb{R}$ は $x, z$ 方向波数、 $c = c_r + i c_i \in \mathbb{C}$ は(複素) 位相速度 ($c_r, c_i \in \mathbb{R}$)。
+> $\alpha \in \mathbb{R}$ は $x$ 方向波数、 $\beta \in \mathbb{R}$ は $z$ 方向波数、 $c = c_r + i c_i \in \mathbb{C}$ は(複素) 位相速度 ($c_r, c_i \in \mathbb{R}$)
 
-$x, z$ 方向には基本流は一様なので正弦波とし、$y$ 方向には速度分布 $U(y)$ があるので一般の(複素)関数 $\tilde{v}(y)$ を考えています。
-$\tilde{v}(y)  = \abs{\tilde{v} (y) } e^{i\phi (y)}$、および 波数ベクトル $$\vb*{k} = \mqty(\alpha \\ \beta)$$、 $$\vb*{x} = \mqty(x \\ z)$$ とすると、(実際の流れ場として現れる) 実部は、
+$$\tilde{v}(y)  = \abs{\tilde{v} (y) } e^{i\phi (y)}$$
+
+および、波数ベクトルと位置ベクトルを
+
+$$\vb*{k} = \mqty(\alpha \\ \beta), \vb*{x} = \mqty(x \\ z)$$
+
+とすれば、
 
 $$\begin{align*}
-& \mathrm{Real}\qty{ \abs{\tilde{v}} e^{i\phi(y)} e^{i\qty[ \alpha x + \beta z - \alpha (c_r + i c_i) t]} } \\
+\mathrm{Real}\qty(v)
+& = \mathrm{Real}\qty{ \abs{\tilde{v}} e^{i\phi(y)} e^{i\qty[ \alpha x + \beta z - \alpha (c_r + i c_i) t]} } \\
 & = \abs{\tilde{v} (y) } e^{\alpha c_i t} \cos( \vb*{k} \cdot \vb*{x} - \alpha c_r t + \phi(y) )
 \end{align*}$$
 
-となります。これは、次の特徴を持ちます：
-- **$\alpha c_i > 0$ なら擾乱は指数的に成長。 $\alpha c_i < 0$ なら擾乱は指数的に減衰。**
-- $y$ 方向の振幅分布は $\abs{\tilde{v}(y)}$ により、位相分布は $\phi(y)$ で決まる。
-- 波の伝播の$x$ 方向への位相速度が $c_r$。
-- ベクトル $$\vb*{k}$$ に直交した波面を持つ。つまりある瞬間 ($t$ を固定) に $$\vb*{k}$$ に直交する方向へ $$\vb*{x}$$ を変化させても、 $$\vb*{k} \cdot \vb*{x}$$ は変わらず $\cos$ の中身（位相）は一定。
-〔TODO: 具体例のプロット〕
-<!-- u_perp, u_parallelは...また必要になったら追加すればいいよね -->
+と書けます。
+これは、波数ベクトル $$\vb*{k}$$ に直交した波面を持っています(※ つまり、$t$ を固定すると、 $$\vb*{k}$$ に垂直な方向には $$\vb*{k} \cdot \vb*{x}$$ は変わらず $\cos$ の中身(位相) が一定となる)〔TODO: 具体例の図示〕
+
+ここで重要なのが $e^{\alpha c_i t}$ の部分で、
+- $\alpha c_i > 0$ ならば、時間とともに指数的に増幅
+- $\alpha c_i < 0$ ならば、時間とともに指数的に減衰
+をすることが分かります。
+このとき、最初に述べた 「**基本流 (base flow)**が与えられたとき、ある波長の擾乱を加えたら増幅（または減衰）されるか？」 という問題は、「ある波数 $\alpha, \beta$ を与えたときに、式(\ref{eq:b1})を満たす $c$ の虚部 $c_i$ の符号は？」 という問題に帰着します。
+
 
 
 ## Rayleigh方程式
