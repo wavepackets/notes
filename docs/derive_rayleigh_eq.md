@@ -166,7 +166,7 @@ $$\begin{equation*}
 > ただし $\alpha, \beta \in \mathbb{R}$ は $x, z$ 方向波数、 $c = c_r + i c_i \in \mathbb{C}$ は(複素) 位相速度 ($c_r, c_i \in \mathbb{R}$)。
 
 $x, z$ 方向には基本流は一様なので正弦波とし、$y$ 方向には速度分布 $U(y)$ があるので一般の(複素)関数 $\tilde{v}(y)$ を考えています。
-$\tilde{v}(y)  = \abs{\tilde{v} (y) } e^{i\phi (y)}$、および 波数ベクトル $\vb\*{k} = \mqty(\alpha \\ \beta)$、 $\vb\*{x} = \mqty(x \\ z)$ とすると、(実際の流れ場として現れる) 実部は、
+$\tilde{v}(y)  = \abs{\tilde{v} (y) } e^{i\phi (y)}$、および 波数ベクトル $$\vb*{k} = \mqty(\alpha \\ \beta)$$、 $$\vb*{x} = \mqty(x \\ z)$$ とすると、(実際の流れ場として現れる) 実部は、
 
 $$\begin{align*}
 & \mathrm{Real}\qty\{ \abs{\tilde{v}} e^{i\phi(y)} e^{i\qty[ \alpha x + \beta z - \alpha (c_r + i c_i) t]} \} \\
@@ -174,7 +174,7 @@ $$\begin{align*}
 \end{align*}$$
 
 となります。これは、次の特徴を持ちます：
-- ベクトル $\vb*{k}$ に直交した波面を持つ。つまりある瞬間 ($t$ を固定) に $\vb*{k}$ に直交する方向へ $\vb*{x}$ を変化させても、 $\vb*{k} \cdot \vb*{x}$ は変わらず $\cos$ の中身（位相）は一定。
+- ベクトル $$\vb*{k}$$ に直交した波面を持つ。つまりある瞬間 ($t$ を固定) に $$\vb*{k}$$ に直交する方向へ $$\vb*{x}$$ を変化させても、 $$\vb*{k} \cdot \vb*{x}$$ は変わらず $\cos$ の中身（位相）は一定。
 - $x$ 方向への位相速度が $c_r$。
 - $\alpha c_i > 0$ なら擾乱は指数的に成長。 $\alpha c_i < 0$ なら擾乱は指数的に減衰。
 - $y$ 方向の振幅分布は $\abs{\tilde{v}(y)}$ により、位相分布は $\phi(y)$ で決まる。
