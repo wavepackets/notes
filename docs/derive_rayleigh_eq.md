@@ -27,7 +27,7 @@ parent: 非粘性・１次元速度分布の線形安定性解析
 これをNavier-Stokes方程式に代入すれば、
 
 $$\begin{gather*}
-\pdv{t} \qty(U_i + u'_i) = - \qty(U_j + u'_j) \pdv{x_j} \qty(U_i + u'_i) - \pdv{x_i} \qty(P + p') + \frac{1}{Re} \laplacian{U_i + u'_i} \\
+\pdv{t} \qty(U_i + u'_i) = - \qty(U_j + u'_j) \pdv{x_j} \qty(U_i + u'_i) - \pdv{x_i} \qty(P + p') + \frac{1}{Re} \laplacian{\qty(U_i + u'_i)} \\
 \pdv{x_i} \qty(U_i + u'_i) = 0
 \end{gather*}$$
 
@@ -54,7 +54,7 @@ $$\begin{gather*}
 Rayleigh方程式の導出では、以下の場合を考えます:
 1. 非粘性 ($Re \to \infty$)
 2. 無限小擾乱 (擾乱成分の2次以上の項を無視して線形化できる)
-3. 平行流 (基本流の速度場は $U_1 = U(y), U_2=U_3 = 0$ の形をとる。ただし$i=1,2,3$ はそれぞれ $x, y, z$方向を表す)
+3. 平行流 (基本流の速度場は $U_1 = U(y), U_2=U_3 = 0$ の形をとる。ただし添え字1, 2, 3はそれぞれ $x, y, z$方向を表す)
 4. 波状擾乱 (後述)
 
 以下、これらの条件を順に適用して、式変形を進めます。
@@ -235,8 +235,9 @@ $$\begin{align*}
 - $\alpha c_i < 0$ ならば、時間とともに指数的に減衰
 
 をすることが分かります。
-このとき、最初に述べた 「基本流 (base flow)が与えられたとき、ある波長の擾乱を加えたら増幅（または減衰）されるか？」 という問題は、**「ある波数 $\alpha, \beta$ を与えたときに、式(\ref{eq:b1})を満たす $c$ の虚部 $c_i$ の符号は？」**という問題に帰着します。
-
+このとき、最初に述べた 「基本流 (base flow)が与えられたとき、ある波長の擾乱を加えたら増幅（または減衰）されるか？」 という問題は、**「ある波数 $\alpha, \beta \in \mathbb{R}$ を与えたときに、式(\ref{eq:b1})を満たす $c \in \mathbb{C}$ の虚部 $c_i$ の符号は？」**という問題に帰着します。
+これは、ある波数の擾乱の時間発展を求める問題であり、temporal problemとよばれます。
+(逆に、周波数 $$\omega = \alpha c$$ を実数として、複素数の波数 $$\alpha$$ を求める問題設定も可能です。これは、ある周波数の擾乱の空間発展を求める問題となり、spatial problemとよばれます〔TODO〕)
 
 
 この波状擾乱(式(\ref{eq:wave1}))
@@ -252,7 +253,7 @@ $$\qty[ \qty(\pdv{t} + U \pdv{x}) \laplacian - U'' \pdv{x} ] v = 0$$
 
 $$\begin{align*}
 \laplacian{v}
-& = \qty( \pdv[2]{x} + \pdv[2]{y} + \pdv[2]{z} ) v \\
+& = \qty( \pdv[2]{x} + \pdv[2]{y} + \pdv[2]{z} ) \tilde{v}(y) e^{i \qty(\alpha x + \beta z - \alpha c t)} \\
 & = \pdv{x} \qty( i\alpha \tilde{v} e^{i(\alpha x + \beta z - \alpha c t)}  ) + 
 \pdv{y} \qty( \dv{\tilde{v}}{y} e^{i(\alpha x + \beta z - \alpha c t)} ) +
 \pdv{z} \qty( i\beta \tilde{v} e^{i(\alpha x + \beta z - \alpha c t)}  ) \\
